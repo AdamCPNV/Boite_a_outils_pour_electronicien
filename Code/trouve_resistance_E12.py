@@ -1,27 +1,25 @@
 SERIE = [1, 1.2, 1.5, 1.8, 2.2, 2.7, 3.3, 3.9, 4.7, 5.6, 6.8, 8.2]
 
-
-
 #permet de trouvé la résistance maximal à utiliser pour etre le plus proche de la cible
-def supperieur_proche_E12(a_trouver):
+def supperieur_proche_E12(resistance):
     i = 1
     while True :
         i *= 10
         for nombre in SERIE:
-            resulta = a_trouver / (nombre * i)
-            print(str(a_trouver) + " diviser par " + str(nombre * i ) + " = " + str(resulta))
+            resulta = resistance / (nombre * i)
+            print(str(resistance) + " diviser par " + str(nombre * i ) + " = " + str(resulta))
             if resulta <= 1:
                     return resulta, nombre * i
 
 #permet de trouvé la résistance minimal à utiliser pour etre le plus proche de la cible
-def inferieur_proche_E12(a_trouver):
+def inferieur_proche_E12(resistance):
     i = 1
     while True :
         i *= 10
         ancienne_difference = 1
         for nombre in SERIE:
-            resulta = a_trouver / (nombre * i)
-            print(str(a_trouver) + " diviser par " + str(nombre * i ) + " = " + str(resulta))
+            resulta = resistance / (nombre * i)
+            print(str(resistance) + " diviser par " + str(nombre * i ) + " = " + str(resulta))
             # tanps que le nombre est compris entre 1 et 2 on le divise par plus grand
             if resulta >= 1 and resulta <= 2:
                     difference = resulta - 1
