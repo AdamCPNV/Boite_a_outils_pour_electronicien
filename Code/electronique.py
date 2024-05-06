@@ -9,7 +9,7 @@ def inferieur_proche_E12(a_trouver):
             print(str(a_trouver) + " diviser par " + str(nombre * i ) + " = " + str(resulta))
             # inferieur avec serie E 12 le plus proche du nombre entier
             if resulta <= 1:
-                    return resulta
+                    return resulta, nombre * i
 
 
 def supperieur_proche_E12(a_trouver):
@@ -20,17 +20,33 @@ def supperieur_proche_E12(a_trouver):
         for nombre in SERIE:
             resulta = a_trouver / (nombre * i)
             print(str(a_trouver) + " diviser par " + str(nombre * i ) + " = " + str(resulta))
-            # tenos que le nombre est compris entre 1 et 2 on le divise par plus grand
+            # tanps que le nombre est compris entre 1 et 2 on le divise par plus grand
             if resulta >= 1 and resulta <= 2:
                     difference = resulta - 1
                     if ancienne_difference > difference:
                          ancienne_difference = difference
+                         ancien_nombre = nombre * i
                          None
                     else:
-                        return resulta
+                        return resulta, nombre * i
             elif resulta < 1: 
-                 return ancienne_difference + 1 
+                 return ancienne_difference + 1, ancien_nombre
 
+def valeur_proche(min,max):
+     difference_minimal = 1 - min[0]
+     difference_maximal = max[0] - 1
 
-print(supperieur_proche_E12(600))
+     if difference_minimal > difference_maximal:
+          print("Valeur max :" + str(difference_maximal))
+          print("La résistance la plus proche est de : " + str(max[1]))
+          return max
+     else:
+          print("Valeur min :" + str(difference_minimal))
+          print("La résistance la plus proche est de : " + str(min[1]))
+          return min
+
+a = inferieur_proche_E12(550)
+b = supperieur_proche_E12(550)
+
+print(valeur_proche(a,b))
 
