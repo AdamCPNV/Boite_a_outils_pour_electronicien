@@ -1,6 +1,13 @@
+"""
+Auteur : Adam Sifate
+Projet : Boîte à outils pour électronicien
+Version : 0.1
+Date : 07.05.2024
+"""
 import tkinter
 import loi_ohm
 
+#Recupere les valeurs insérer par l'utilisateur et affiche les résultat
 def recuprer_champs():
     tension_alimentation = float(entrer_tension_alimentation.get())
     courrant_max = float(entrer_courent_max.get())
