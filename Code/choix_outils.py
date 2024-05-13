@@ -12,7 +12,7 @@ import outils3
 
 
 
-
+# permet de differencier quelle outils à été choisi
 def changement_menu(maitre, outils):
 
     match outils:
@@ -29,6 +29,7 @@ def changement_menu(maitre, outils):
         case 6:
             print("A implementer")
 
+# affiche l'interface graphique
 def choix_des_outils(maitre):
     frame = tkinter.Frame(maitre)
     titre = tkinter.Label(frame, text= "Veuilliez choisire ce que vous voulez faire")

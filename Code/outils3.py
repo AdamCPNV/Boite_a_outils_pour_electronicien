@@ -7,6 +7,7 @@ Date : 13.05.2024
 
 import tkinter
 
+# affiche l'interface graphique
 def outils3(maitre):
 
     frame = tkinter.Frame(maitre)

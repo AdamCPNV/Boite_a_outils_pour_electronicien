@@ -6,7 +6,6 @@ Date : 13.05.2024
 """
 import tkinter
 from choix_outils import choix_des_outils
- 
 fenetre = tkinter.Tk()
 frame = choix_des_outils(fenetre)
 frame.grid()
