@@ -33,4 +33,3 @@ def trouve_paire_resistance(cible):
 
     return  resistance_1, resistance_2
 
-print(trouve_paire_resistance(756))
