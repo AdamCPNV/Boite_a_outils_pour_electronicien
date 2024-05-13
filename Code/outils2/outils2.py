@@ -1,6 +1,5 @@
 import tkinter
 
-def recupere_champs(temps_charge_condensateur, capcaiter_condensateur,  ):
 
 def outils2(maitre):
 
