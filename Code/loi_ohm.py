@@ -20,7 +20,7 @@ def resistance_inserer(tension_alimentation, tension_seul_led, courant_max):
     tension_reel = tension_alimentation - tension_seul_led
     resistance = tension_reel / courant_max
 
-    resistance = trouve_resistance_E12.supperieur_proche_E12(resistance)[1]
+    resistance = trouve_resistance_E12.supperieur_proche_E12(resistance)
     courant_reel = tension_reel / resistance
     puissance_dissiper = tension_alimentation **2 /resistance
     puissance_dissiper = perte(puissance_dissiper)
