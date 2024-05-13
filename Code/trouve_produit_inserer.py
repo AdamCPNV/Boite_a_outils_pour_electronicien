@@ -11,3 +11,5 @@ def condensateur_inserer(temps_recharge, resistance):
     #ajouter serie E6
     temps_recharge_reel = resistance * capcaciter_condensateur
     return capcaciter_condensateur, temps_recharge_reel
+
+#print(resistance_inserer(10, 10))

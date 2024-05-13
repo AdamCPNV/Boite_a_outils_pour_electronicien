@@ -1,8 +1,12 @@
 import tkinter
+import trouve_produit_inserer
 
 
-def recuperer_champs():
-    print("asf")
+def recuperer_champs(entrer_temps_charge_condensateur, entrer_capaciter_condensateur):
+    temps_charge_condensateur = float(entrer_temps_charge_condensateur.get())
+    capaciter_condensateur = float(entrer_capaciter_condensateur.get())
+    resltat = trouve_produit_inserer.resistance_inserer(temps_charge_condensateur, capaciter_condensateur)
+    print(resltat)
 
 def outils2(maitre):
 
@@ -16,7 +20,9 @@ def outils2(maitre):
     text_capaciter_condensateur = tkinter.Label(frame, text="Entrez la capacité du condensateur : ")
     entrer_capaciter_condensateur = tkinter.Entry(frame)
 
-    bouton_calculer = tkinter.Button(frame, text="Calculer")
+    bouton_calculer = tkinter.Button(frame, text="Calculer", command = lambda :(recuperer_champs(
+        entrer_temps_charge_condensateur,
+        entrer_capaciter_condensateur)))
 
     bouton_resistance.grid(row = 0, column  = 0)
     bouton_condensateur.grid(row = 0, column = 1)
@@ -27,6 +33,6 @@ def outils2(maitre):
     text_capaciter_condensateur.grid(row = 2, column = 0)
     entrer_capaciter_condensateur.grid(row = 2, column = 1)
 
-    bouton_calculer.grid(row = 3, column = 0, command = lambda :(recuperer_champs))
+    bouton_calculer.grid(row = 3, column = 0)
     
     return frame
