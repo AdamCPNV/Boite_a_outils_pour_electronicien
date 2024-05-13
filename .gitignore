@@ -1,6 +1,11 @@
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudio,python
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudio,python
 
+#Ignore le environnement virtuelle 
+
+Code/TPI
+COde/__pycache__
+
 ### Python ###
 # Byte-compiled / optimized / DLL files
 __pycache__/
