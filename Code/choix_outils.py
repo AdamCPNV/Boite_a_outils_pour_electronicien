@@ -8,6 +8,7 @@ import tkinter
 from changement_frame import change_frame
 import outils1
 import outils2
+import outils3
 
 
 
@@ -20,7 +21,7 @@ def changement_menu(maitre, outils):
         case 2:
             change_frame(maitre, outils2.outils2(maitre))
         case 3:
-            print("A implementer")
+            change_frame(maitre, outils3.outils3(maitre))
         case 4:
             print("A implementer")
         case 5:
