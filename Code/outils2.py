@@ -1,6 +1,9 @@
 import tkinter
 
 
+def recuperer_champs():
+    print("asf")
+
 def outils2(maitre):
 
     frame = tkinter.Frame(maitre)
@@ -24,6 +27,6 @@ def outils2(maitre):
     text_capaciter_condensateur.grid(row = 2, column = 0)
     entrer_capaciter_condensateur.grid(row = 2, column = 1)
 
-    bouton_calculer.grid(row = 3, column = 0)
+    bouton_calculer.grid(row = 3, column = 0, command = lambda :(recuperer_champs))
     
     return frame
