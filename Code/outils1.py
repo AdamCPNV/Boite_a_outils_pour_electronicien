@@ -17,7 +17,7 @@ def recuprer_champs(entrer_tension_alimentation, entrer_courent_max, entrer_tens
     text_courrant_avec_resistance.config(text= "Courant avec la résistance :" + str(loi_ohm.resistance_inserer(tension_alimentation,tension_seuil_led,courrant_max)[1]))
     text_puissance_dissiper.config(text= "Puissance disspé :" + str(loi_ohm.resistance_inserer(tension_alimentation,tension_seuil_led,courrant_max)[2]))
 
-
+# affiche l'interface graphique
 def outils1(maitre):
     frame = tkinter.Frame(maitre)
 

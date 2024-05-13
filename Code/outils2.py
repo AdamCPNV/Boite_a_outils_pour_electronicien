@@ -1,7 +1,14 @@
+"""
+Auteur : Adam Sifate
+Projet : Boîte à outils pour électronicien
+Version : 0.1
+Date : 13.05.2024
+"""
+
 import tkinter
 import trouve_produit_inserer
 
-
+# récupere les donnée entrer est affiche le résultat
 def recuperer_champs( entrer_temps_charge_condensateur,  entrer_capaciter, taille_reistance, temps_charge_reel_reistance, taille_condensateur):
     temps_charge_condensateur = float(entrer_temps_charge_condensateur.get())
     capaciter = float(entrer_capaciter.get())

@@ -8,10 +8,11 @@ import tkinter
 from changement_frame import change_frame
 import outils1
 import outils2
+import outils3
 
 
 
-
+# permet de differencier quelle outils à été choisi
 def changement_menu(maitre, outils):
 
     match outils:
@@ -20,7 +21,7 @@ def changement_menu(maitre, outils):
         case 2:
             change_frame(maitre, outils2.outils2(maitre))
         case 3:
-            print("A implementer")
+            change_frame(maitre, outils3.outils3(maitre))
         case 4:
             print("A implementer")
         case 5:
@@ -28,6 +29,7 @@ def changement_menu(maitre, outils):
         case 6:
             print("A implementer")
 
+# affiche l'interface graphique
 def choix_des_outils(maitre):
     frame = tkinter.Frame(maitre)
     titre = tkinter.Label(frame, text= "Veuilliez choisire ce que vous voulez faire")
