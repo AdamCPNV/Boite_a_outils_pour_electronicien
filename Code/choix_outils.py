@@ -1,3 +1,9 @@
+"""
+Auteur : Adam Sifate
+Projet : Boîte à outils pour électronicien
+Version : 0.2
+Date : 13.05.2024
+"""
 import tkinter
 from changement_frame import change_frame
 import outils1
@@ -29,11 +35,11 @@ def choix_des_outils(maitre):
     modifier_fournisseur = tkinter.Button(frame, text="Modifier les coordonné de un fournisseur", command=lambda : changement_menu(frame, 5))
     supprimer_fournisseur = tkinter.Button(frame, text="Supprimer un fournisseur", command=lambda : changement_menu(frame, 6))
 
-    titre.grid(row = 0, column = 0)
-    outils1.grid(row = 1,column = 0)
-    outils2.grid(row = 2, column = 0)
-    outils3.grid(row = 3, column = 0)
-    ajouter_fournisseur.grid(row = 4, column = 0)
-    modifier_fournisseur.grid(row = 4, column = 0)
-    supprimer_fournisseur.grid(row = 5, column= 0)
+    titre.grid(row = 0, column = 0, columnspan= 2, padx= 5, pady= 5)
+    outils1.grid(row = 1,column = 0, columnspan= 2, padx= 5, pady= 5)
+    outils2.grid(row = 2, column = 0, columnspan= 2, padx= 5, pady= 5)
+    outils3.grid(row = 3, column = 0, columnspan= 2, padx= 5, pady= 5)
+    ajouter_fournisseur.grid(row = 4, column = 0, padx= 5, pady= 5)
+    modifier_fournisseur.grid(row = 4, column = 1, padx= 5, pady= 5)
+    supprimer_fournisseur.grid(row = 5, column= 0, columnspan= 2, padx= 5, pady= 5)
     return frame

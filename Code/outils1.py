@@ -1,8 +1,8 @@
 """
 Auteur : Adam Sifate
 Projet : Boîte à outils pour électronicien
-Version : 0.1
-Date : 07.05.2024
+Version : 0.2
+Date : 13.05.2024
 """
 import tkinter
 import loi_ohm
@@ -20,6 +20,8 @@ def recuprer_champs(entrer_tension_alimentation, entrer_courent_max, entrer_tens
 
 def outils1(maitre):
     frame = tkinter.Frame(maitre)
+
+    frame.rowconfigure(0,weight=5)
 
     text_tension_alimentation = tkinter.Label(frame, text = "Veuilliez entrez la tension d'allimentaion : ")
     entrer_tension_alimentation = tkinter.Entry(frame)
@@ -49,7 +51,7 @@ def outils1(maitre):
     text_tension_seuil_led.grid(row=2,column=0, sticky="n")
     entrer_tension_seuil_led.grid(row = 2, column = 1, sticky="n")
 
-    bouton_calculer.grid(row=4, column=2, sticky="n")
+    bouton_calculer.grid(row=4, column=2, padx= 10)
 
     text_resistance.grid(row=5,column=0, sticky="n")
 
@@ -57,6 +59,6 @@ def outils1(maitre):
 
     text_puissance_dissiper.grid(row = 7, column= 0, sticky= "n")
 
-    bouton_recherche.grid(row=7, column=2, sticky="n")
+    bouton_recherche.grid(row=8, column=1, sticky="n")
 
     return frame
