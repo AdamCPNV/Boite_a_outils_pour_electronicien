@@ -25,6 +25,12 @@ def trouve_paire_resistance(cible):
 
     liste_resultat = sorted(liste_resultat)
 
-    return liste_resultat[0][1]
+    resistance_1 = liste_resultat[0][1][0]
+    resistance_2 = liste_resultat[0][1][1]
+
+    resistance_1 = resistance_1 * multiplicateur
+    resistance_2 = resistance_2 * multiplicateur
+
+    return  resistance_1, resistance_2
 
 print(trouve_paire_resistance(756))
