@@ -1,6 +1,6 @@
 import tkinter
 
-def outils1(maitre):
+def ajouter_fournisseur(maitre):
     frame = tkinter.Frame(maitre)
 
     text_nom_fournisseur = tkinter.Label(frame, text = "Entrez le nom du nouveaux fournisseur :")
