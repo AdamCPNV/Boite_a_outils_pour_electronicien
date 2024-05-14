@@ -1,12 +1,19 @@
+"""
+Auteur : Adam Sifate
+Projet : Boîte à outils pour électronicien
+Version : 0.1
+Date : 14.05.2024
+"""
 import tkinter
 
+#affiche l'interface graphique
 def modifier_fournisseur(maitre):
     frame = tkinter.Frame(maitre)
 
     text_nom_fournisseur_a_modifer = tkinter.Label(frame, text= "Entret le nom du fournisseur a modifier : ")
-    entrer_nom_fournisseur_a_modifier = tkinter.Label(frame)
+    entrer_nom_fournisseur_a_modifier = tkinter.Entry(frame)
 
-    bouton_rechercher = tkinter.Button(frame)
+    bouton_rechercher = tkinter.Button(frame, text= "Rechercher")
 
     text_nom_fournisseur = tkinter.Label(frame, text= "Entrer le nouveaux nom du fournisseur : ")
     entrer_nom_fournisseur = tkinter.Entry(frame)
@@ -17,7 +24,7 @@ def modifier_fournisseur(maitre):
     text_nouveaux_numero_telephone = tkinter.Label(frame, text="Enrez le nouveaux numero de téléphone : ")
     entrer_nouveaux_numero_telephone = tkinter.Entry(frame)
 
-    bouton_valider = tkinter.Entry(text = "Validé")
+    bouton_valider = tkinter.Button(text = "Validé")
 
     text_nom_fournisseur_a_modifer.grid(row=0, column=0)
     entrer_nom_fournisseur_a_modifier.grid(row=0, column=1)
@@ -28,7 +35,7 @@ def modifier_fournisseur(maitre):
     entrer_nom_fournisseur.grid(row=2, column=1)
 
     text_nouvelle_addresse.grid(row=3, column=0)
-    entrer_nouvelle_addresse(row = 3, column = 1)
+    entrer_nouvelle_addresse.grid(row = 3, column = 1)
 
     text_nouveaux_numero_telephone.grid(row= 4, column=0)
     entrer_nouveaux_numero_telephone.grid(row=4, column= 1)

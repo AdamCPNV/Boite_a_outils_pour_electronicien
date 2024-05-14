@@ -1,5 +1,13 @@
+"""
+Auteur : Adam Sifate
+Projet : Boîte à outils pour électronicien
+Version : 0.1
+Date : 14.05.2024
+"""
 import tkinter
 
+
+#affiche l'interface graphique
 def ajouter_fournisseur(maitre):
     frame = tkinter.Frame(maitre)
 
