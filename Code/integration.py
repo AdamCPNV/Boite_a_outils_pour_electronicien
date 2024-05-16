@@ -11,7 +11,7 @@ class IntergationDB():
         self.mycursor = self.mydb.cursor()
         
 
-    def select(self):
+    def selection(self):
 
         requete = "select idSupplier, Name, Address, PhoneNumber from supplier;"
         
@@ -19,20 +19,17 @@ class IntergationDB():
         myresult = self.mycursor.fetchall()
         return myresult
 
-    """"
-    @param NomDeUtilisateur : string
-    @param MotDePasse : string
-    return : None
-    """
-    def insert(self,nom, addresse, numero_telephone):
 
-        
+    def insertion(self,nom, addresse, numero_telephone):       
         requete = "insert into supplier (Name,Address,PhoneNumber) value ('{}','{}','{}');"
         self.mycursor.execute(requete .format(nom, addresse, numero_telephone))
         self.mydb.commit()
-
-
+    
+    def suppertion(self, numero_telephone):
+        requete = "DELETE FROM supplier WHERE PhoneNumber = {};"
+        self.mycursor.execute(requete .format(numero_telephone))
+        self.mydb.commit()
 
 test = IntergationDB()
 
-print(test.insert(4,4,4))
+print(test.suppertion(11112233))
