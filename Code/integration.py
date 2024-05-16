@@ -35,12 +35,9 @@ class IntergationDB():
         if nom != "Name":
             nom = "'" + nom + "'"
 
-        requete = "UPDATE supplier SET Name = {}, Address = '{}', PhoneNumber = {} WHERE PhoneNumber = {};"
+        if addresse !="Address":
+            addresse = "'" + addresse + "'" 
+
+        requete = "UPDATE supplier SET Name = {}, Address = {}, PhoneNumber = {} WHERE PhoneNumber = {};"
         self.mycursor.execute(requete .format(nom, addresse, nouveaux_numero_telephone, numero_actuelle ))
-        self.mydb.commit()       
-
-
-test = IntergationDB()
-
-
-print(test.modification(98, addresse="yopopt"))
+        self.mydb.commit()
