@@ -1,3 +1,10 @@
+"""
+Auteur : Adam Sifate
+Projet : Boîte à outils pour électronicien
+Version : 0.1
+Date : 16.05.2024
+"""
+
 import mysql.connector
 
 class IntergationDB():
@@ -30,13 +37,7 @@ class IntergationDB():
         self.mycursor.execute(requete .format(numero_telephone))
         self.mydb.commit()
 
-    def modification(self,numero_actuelle, nom = "Name", addresse = "Address", nouveaux_numero_telephone = "PhoneNumber"):
-
-        if nom != "Name":
-            nom = "'" + nom + "'"
-
-        if addresse !="Address":
-            addresse = "'" + addresse + "'" 
+    def modification(self,numero_actuelle, nom, addresse, nouveaux_numero_telephone):
 
         requete = "UPDATE supplier SET Name = {}, Address = {}, PhoneNumber = {} WHERE PhoneNumber = {};"
         self.mycursor.execute(requete .format(nom, addresse, nouveaux_numero_telephone, numero_actuelle ))
