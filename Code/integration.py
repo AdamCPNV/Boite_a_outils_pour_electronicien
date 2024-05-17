@@ -49,6 +49,6 @@ class IntergationDB():
         inner join product_has_supplier ON idproduct = product_id inner join supplier on idSupplier = product_has_supplier.supplier_id
         where (product.Type = {}) and (product.Value between {} and {}) and (product.Size between {} and {});"""
 
-        self.mycursor.execute(requete.format(type, valeur, valeur + 0.001, taille, taille + 0.001))
+        self.mycursor.execute(requete.format(type, valeur - 0.001, valeur , taille - 0.001, taille ))
         myresult = self.mycursor.fetchall()
         return myresult

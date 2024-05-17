@@ -42,7 +42,7 @@ def outils1(maitre):
         text_courrant_avec_resistance, 
         text_puissance_dissiper)))
     
-    bouton_recherche = tkinter.Button(frame, text="Recherche produit", command= lambda :(change_frame(maitre, interface_choix_produit.affichage_produit(maitre,1, 1.1, 1.2))))
+    bouton_recherche = tkinter.Button(frame, text="Recherche produit", command= lambda :(change_frame(maitre, interface_choix_produit.affichage_produit(maitre,2, 213, 5.5))))
 
     text_tension_alimentation.grid(row=0,column=0, sticky="n")
     entrer_tension_alimentation.grid(row=0, column=1, sticky="n")
