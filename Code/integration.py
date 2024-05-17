@@ -1,7 +1,7 @@
 """
 Auteur : Adam Sifate
 Projet : Boîte à outils pour électronicien
-Version : 0.2
+Version : 0.3
 Date : 17.05.2024
 """
 
@@ -50,5 +50,14 @@ class IntergationDB():
         where (product.Type = {}) and (product.Value between {} and {}) and (product.Size between {} and {});"""
 
         self.mycursor.execute(requete.format(type, valeur - 0.001, valeur , taille - 0.001, taille ))
+        myresult = self.mycursor.fetchall()
+        return myresult
+    
+    def rechercher_resistance(self, valeur):
+        requete = """select  product.Price, product.`Manufacturer-reference`,product.Type,  product.Value, product.Size, supplier.Name
+        from product
+        inner join product_has_supplier ON idproduct = product_id inner join supplier on idSupplier = product_has_supplier.supplier_id
+        where (product.Type = 1) and (product.Value between {} and {});"""
+        self.mycursor.execute(requete.format(valeur - 0.001, valeur))
         myresult = self.mycursor.fetchall()
         return myresult
