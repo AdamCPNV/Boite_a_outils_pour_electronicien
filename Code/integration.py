@@ -1,8 +1,8 @@
 """
 Auteur : Adam Sifate
 Projet : Boîte à outils pour électronicien
-Version : 0.1
-Date : 16.05.2024
+Version : 0.2
+Date : 17.05.2024
 """
 
 import mysql.connector
@@ -52,6 +52,3 @@ class IntergationDB():
         self.mycursor.execute(requete.format(type, valeur, valeur + 0.001, taille, taille + 0.001))
         myresult = self.mycursor.fetchall()
         return myresult
-tets = IntergationDB()
-
-print(tets.rechercher_produit(1,1.2,1.2))

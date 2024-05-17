@@ -14,7 +14,6 @@ import modifier_fournisseur
 import supprimer_fournisseur
 
 
-
 # permet de differencier quelle outils à été choisi
 def changement_menu(maitre, outils):
 
@@ -50,4 +49,5 @@ def choix_des_outils(maitre):
     ajouter_fournisseur.grid(row = 4, column = 0, padx= 5, pady= 5)
     modifier_fournisseur.grid(row = 4, column = 1, padx= 5, pady= 5)
     supprimer_fournisseur.grid(row = 5, column= 0, columnspan= 2, padx= 5, pady= 5)
+
     return frame

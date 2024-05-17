@@ -6,6 +6,8 @@ Date : 13.05.2024
 """
 import tkinter
 import loi_ohm
+from changement_frame import change_frame
+import interface_choix_produit
 
 #Recupere les valeurs insérer par l'utilisateur et affiche les résultat
 
@@ -40,7 +42,7 @@ def outils1(maitre):
         text_courrant_avec_resistance, 
         text_puissance_dissiper)))
     
-    bouton_recherche = tkinter.Button(frame, text="Recherche produit")
+    bouton_recherche = tkinter.Button(frame, text="Recherche produit", command= lambda :(change_frame(maitre, interface_choix_produit.affichage_produit(maitre,1, 1.1, 1.2))))
 
     text_tension_alimentation.grid(row=0,column=0, sticky="n")
     entrer_tension_alimentation.grid(row=0, column=1, sticky="n")
