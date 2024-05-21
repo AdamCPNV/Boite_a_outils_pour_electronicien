@@ -26,3 +26,4 @@ def resistance_inserer(tension_alimentation, tension_seul_led, courant_max):
     puissance_dissiper = perte(puissance_dissiper)
     return resistance ,courant_reel, puissance_dissiper
 
+

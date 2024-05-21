@@ -10,12 +10,9 @@ Date : 07.05.2024
 #Serie E12
 SERIE = [1, 1.2, 1.5, 1.8, 2.2, 2.7, 3.3, 3.9, 4.7, 5.6, 6.8, 8.2]
 
-
-
-
 #permet de trouvé la résistance maximal à utiliser pour etre le plus proche de la cible
 def supperieur_proche_E12(resistance):
-    i = 1
+    i = 0.1
     while True :
         i *= 10
         for resistance_E12 in SERIE:
