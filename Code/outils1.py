@@ -1,8 +1,8 @@
 """
 Auteur : Adam Sifate
 Projet : Boîte à outils pour électronicien
-Version : 0.3
-Date : 17.05.2024
+Version : 0.4
+Date : 21.05.2024
 """
 import tkinter
 import loi_ohm
@@ -49,8 +49,7 @@ def outils1(maitre):
         bouton_recherche,
         maitre)))
     
-    bouton_recherche = tkinter.Button(frame, text="Recherche produit", command= lambda :(change_frame(maitre, interface_choix_produit.affichage_produit(maitre,2, 213, 5.5))))
-
+    bouton_recherche = tkinter.Button(frame, text="Recherche produit")
     text_tension_alimentation.grid(row=0,column=0, sticky="n")
     entrer_tension_alimentation.grid(row=0, column=1, sticky="n")
 

@@ -1,8 +1,8 @@
 """
 Auteur : Adam Sifate
 Projet : Boîte à outils pour électronicien
-Version : 0.2
-Date : 17.05.2024
+Version : 0.3
+Date : 21.05.2024
 """
 
 import tkinter
@@ -39,7 +39,7 @@ def outils2(maitre):
 
     text_capaciter = tkinter.Label(frame, text="Entrez la capacité du condensateur : ")
     entrer_capaciter = tkinter.Entry(frame)
-    bouton_rechercher = tkinter.Button(frame, text= "rechercher")
+    bouton_rechercher = tkinter.Button(frame, text="Recherche produit")
 
     bouton_calculer = tkinter.Button(frame, text="Calculer", command = lambda :(recuperer_champs(
         entrer_temps_charge_condensateur.get(),
