@@ -1,3 +1,10 @@
+"""
+Auteur : Adam Sifate
+Projet : Boîte à outils pour électronicien
+Version : 0.2
+Date : 21.05.2024
+"""
+
 import tkinter
 import integration
 
@@ -17,6 +24,11 @@ def affichage_produit(maitre, type, valeur, taille = 0):
     info_produit.grid()
     resultat = rechercher_produit(type,valeur,taille)
 
+    if resultat == []:
+        message_erreur = tkinter.Label(frame, text= "Produit pas présent dans la base de donnée")
+        message_erreur.grid()
+        return frame
+
     tableaux = ["prix", "Numero fabriquant", "Type", "Valeur", "Taille", "Nom"]
 
     for categorie in range (len(tableaux)):
@@ -29,3 +41,4 @@ def affichage_produit(maitre, type, valeur, taille = 0):
             f.grid(row=i + 1, column=j)
 
     return frame
+
