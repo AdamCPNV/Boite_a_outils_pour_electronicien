@@ -27,6 +27,7 @@ def supperieur_proche_E12(resistance, serie_E6 = False):
 
 #permet de trouvé la résistance minimal à utiliser pour etre le plus proche de la cible
 def inferieur_proche_E12(resistance, serie_E6 = False):
+    resistance = resistance * 10000000
     if serie_E6:
          serie = SERIE_E6
     else:
@@ -47,9 +48,9 @@ def inferieur_proche_E12(resistance, serie_E6 = False):
                          ancien_resistance_E12 = resistance_E12 * i
                          None
                     else:
-                        return resistance_E12 * i
+                        return (resistance_E12 * i) /10000000
             elif resulta < 1: 
-                 return ancien_resistance_E12
+                 return (ancien_resistance_E12) /10000000
 
 #Deduit quelle est la valeur la plus proche de la cible
 def valeur_proche(cible,min,max):

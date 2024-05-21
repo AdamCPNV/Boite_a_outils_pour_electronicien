@@ -22,4 +22,4 @@ def condensateur_inserer(temps_recharge, resistance):
     return condensateur, temps_recharge_reel
 
 
-print(condensateur_inserer(0.0005,0.00000033)[0])
+print(condensateur_inserer(0.12,27000)[0])
