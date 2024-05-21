@@ -1,11 +1,9 @@
 """
 Auteur : Adam Sifate
 Projet : Boîte à outils pour électronicien
-Version : 0.2
+Version : 0.3
 Date : 21.05.2024
 """
-
-
 
 #Serie E12
 SERIE = [1, 1.2, 1.5, 1.8, 2.2, 2.7, 3.3, 3.9, 4.7, 5.6, 6.8, 8.2]
@@ -45,11 +43,11 @@ def inferieur_proche_E12(resistance):
                  return ancien_resistance_E12
 
 #Deduit quelle est la valeur la plus proche de la cible
-def valeur_proche(min,max):
-     difference_minimal = 1 - min
-     difference_maximal = max - 1
+def valeur_proche(cible,min,max):
+     difference_minimal = cible - min
+     difference_maximal = cible - max
 
-     if difference_minimal < difference_maximal:
+     if abs(difference_maximal) < abs(difference_minimal):
           print("Valeur max :" + str(difference_maximal))
           print("La résistance la plus proche est de : " + str(max))
           return max
@@ -57,5 +55,6 @@ def valeur_proche(min,max):
           print("Valeur min :" + str(difference_minimal))
           print("La résistance la plus proche est de : " + str(min))
           return min
+
 
 
