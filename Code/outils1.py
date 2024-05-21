@@ -15,9 +15,14 @@ def recuprer_champs(entrer_tension_alimentation, entrer_courent_max, entrer_tens
     tension_alimentation = float(entrer_tension_alimentation.get())
     courrant_max = float(entrer_courent_max.get())
     tension_seuil_led = float(entrer_tension_seuil_led.get())
-    resistance_a_installer = loi_ohm.resistance_inserer(tension_alimentation,tension_seuil_led,courrant_max)[0]
-    courrant_avec_resistance = loi_ohm.resistance_inserer(tension_alimentation,tension_seuil_led,courrant_max)[1]
-    puissance_dissiper = loi_ohm.resistance_inserer(tension_alimentation,tension_seuil_led,courrant_max)[2]
+    resultat = loi_ohm.resistance_inserer(tension_alimentation,tension_seuil_led,courrant_max)
+    if resultat == False:
+        text_resistance.config(text= "La valeur de la résistance a installer est trop grande (dépasse les 10 mega ohm)")
+        return None
+
+    resistance_a_installer =resultat[0]
+    courrant_avec_resistance = resultat[1]
+    puissance_dissiper = resultat[2]
     text_resistance.config(text= "Valeur de la résistance a installé :" + str(resistance_a_installer))
     text_courrant_avec_resistance.config(text= "Courant avec la résistance :" + str(courrant_avec_resistance))
     text_puissance_dissiper.config(text= "Puissance disspé :" + str(puissance_dissiper))
