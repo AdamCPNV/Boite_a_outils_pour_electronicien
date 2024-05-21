@@ -7,7 +7,7 @@ Date : 13.05.2024
 import tkinter
 from changement_frame import change_frame
 import outils1
-import outils2
+import interface_outils2.outils2 as outils2
 import outils3
 import ajout_fournisseur
 import modifier_fournisseur
