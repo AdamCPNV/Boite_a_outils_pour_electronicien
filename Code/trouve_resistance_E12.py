@@ -1,19 +1,24 @@
 """
 Auteur : Adam Sifate
 Projet : Boîte à outils pour électronicien
-Version : 0.3
+Version : 0.4
 Date : 21.05.2024
 """
 
-#Serie E12
-SERIE = [1, 1.2, 1.5, 1.8, 2.2, 2.7, 3.3, 3.9, 4.7, 5.6, 6.8, 8.2]
+#SERIE_E12
+SERIE_E12 = [1, 1.2, 1.5, 1.8, 2.2, 2.7, 3.3, 3.9, 4.7, 5.6, 6.8, 8.2]
+SERIE_E6 = [1, 1.5, 2.2, 3.3, 4.7, 6.8]
 
 #permet de trouvé la résistance maximal à utiliser pour etre le plus proche de la cible
-def supperieur_proche_E12(resistance):
+def supperieur_proche_E12(resistance, serie_E6 = False):
+    if serie_E6:
+         serie = SERIE_E6
+    else:
+         serie = SERIE_E12
     i = 0.1
     while True :
         i *= 10
-        for resistance_E12 in SERIE:
+        for resistance_E12 in serie:
             resulta = resistance / (resistance_E12 * i)
             print(str(resistance) + " diviser par " + str(resistance_E12 * i ) + " = " + str(resulta))
             if resulta <= 1:
@@ -21,12 +26,16 @@ def supperieur_proche_E12(resistance):
             
 
 #permet de trouvé la résistance minimal à utiliser pour etre le plus proche de la cible
-def inferieur_proche_E12(resistance):
+def inferieur_proche_E12(resistance, serie_E6 = False):
+    if serie_E6:
+         serie = SERIE_E6
+    else:
+         serie = SERIE_E12
     i = 1
     while True :
         i *= 10
         ancienne_difference = 1
-        for resistance_E12 in SERIE:
+        for resistance_E12 in serie:
             resulta = resistance / (resistance_E12 * i)
             print(str(resistance) + " diviser par " + str(resistance_E12 * i ) + " = " + str(resulta))
             # tanps que le resistance_E12 est compris entre 1 et 2 on le divise par plus grand
