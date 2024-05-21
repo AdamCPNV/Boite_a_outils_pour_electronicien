@@ -1,21 +1,27 @@
 """
 Auteur : Adam Sifate
 Projet : Boîte à outils pour électronicien
-Version : 0.2
-Date : 13.05.2024
+Version : 0.4
+Date : 21.05.2024
 """
 import tkinter
 import loi_ohm
+from changement_frame import change_frame
+import interface_choix_produit
 
 #Recupere les valeurs insérer par l'utilisateur et affiche les résultat
 
-def recuprer_champs(entrer_tension_alimentation, entrer_courent_max, entrer_tension_seuil_led, text_resistance, text_courrant_avec_resistance, text_puissance_dissiper):
+def recuprer_champs(entrer_tension_alimentation, entrer_courent_max, entrer_tension_seuil_led, text_resistance, text_courrant_avec_resistance, text_puissance_dissiper, bouton_rechercher, maitre):
     tension_alimentation = float(entrer_tension_alimentation.get())
     courrant_max = float(entrer_courent_max.get())
     tension_seuil_led = float(entrer_tension_seuil_led.get())
-    text_resistance.config(text= "Valeur de la résistance a installé :" + str(loi_ohm.resistance_inserer(tension_alimentation,tension_seuil_led,courrant_max)[0]))
-    text_courrant_avec_resistance.config(text= "Courant avec la résistance :" + str(loi_ohm.resistance_inserer(tension_alimentation,tension_seuil_led,courrant_max)[1]))
-    text_puissance_dissiper.config(text= "Puissance disspé :" + str(loi_ohm.resistance_inserer(tension_alimentation,tension_seuil_led,courrant_max)[2]))
+    resistance_a_installer = loi_ohm.resistance_inserer(tension_alimentation,tension_seuil_led,courrant_max)[0]
+    courrant_avec_resistance = loi_ohm.resistance_inserer(tension_alimentation,tension_seuil_led,courrant_max)[1]
+    puissance_dissiper = loi_ohm.resistance_inserer(tension_alimentation,tension_seuil_led,courrant_max)[2]
+    text_resistance.config(text= "Valeur de la résistance a installé :" + str(resistance_a_installer))
+    text_courrant_avec_resistance.config(text= "Courant avec la résistance :" + str(courrant_avec_resistance))
+    text_puissance_dissiper.config(text= "Puissance disspé :" + str(puissance_dissiper))
+    bouton_rechercher.config(command= lambda :(change_frame(maitre, interface_choix_produit.affichage_produit(maitre,1,resistance_a_installer, puissance_dissiper))))
 
 # affiche l'interface graphique
 def outils1(maitre):
@@ -32,16 +38,18 @@ def outils1(maitre):
     text_resistance = tkinter.Label(frame, text= "Valeur de la résistance a installé :")
     text_courrant_avec_resistance = tkinter.Label(frame, text= "Courant avec la résistance: ")
     text_puissance_dissiper = tkinter.Label(frame, text="Puissance disspé :")
+    bouton_recherche = tkinter.Button(frame, text="Recherche produit")
 
     bouton_calculer = tkinter.Button(frame,text="Calculer", command = lambda :(recuprer_champs(
         entrer_tension_alimentation,
         entrer_courent_max, 
         entrer_tension_seuil_led,text_resistance,
         text_courrant_avec_resistance, 
-        text_puissance_dissiper)))
+        text_puissance_dissiper,
+        bouton_recherche,
+        maitre)))
     
     bouton_recherche = tkinter.Button(frame, text="Recherche produit")
-
     text_tension_alimentation.grid(row=0,column=0, sticky="n")
     entrer_tension_alimentation.grid(row=0, column=1, sticky="n")
 

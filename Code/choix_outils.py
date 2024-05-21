@@ -9,7 +9,9 @@ from changement_frame import change_frame
 import outils1
 import outils2
 import outils3
-
+import ajout_fournisseur
+import modifier_fournisseur
+import supprimer_fournisseur
 
 
 # permet de differencier quelle outils à été choisi
@@ -23,11 +25,11 @@ def changement_menu(maitre, outils):
         case 3:
             change_frame(maitre, outils3.outils3(maitre))
         case 4:
-            print("A implementer")
+            change_frame(maitre, ajout_fournisseur.ajouter_fournisseur(maitre))
         case 5:
-            print("A implementer")
+            change_frame(maitre, modifier_fournisseur.modifier_fournisseur(maitre))
         case 6:
-            print("A implementer")
+            change_frame(maitre, supprimer_fournisseur.supprimer_fournisseur(maitre))
 
 # affiche l'interface graphique
 def choix_des_outils(maitre):
@@ -47,4 +49,5 @@ def choix_des_outils(maitre):
     ajouter_fournisseur.grid(row = 4, column = 0, padx= 5, pady= 5)
     modifier_fournisseur.grid(row = 4, column = 1, padx= 5, pady= 5)
     supprimer_fournisseur.grid(row = 5, column= 0, columnspan= 2, padx= 5, pady= 5)
+
     return frame
