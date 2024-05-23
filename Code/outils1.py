@@ -1,8 +1,8 @@
 """
 Auteur : Adam Sifate
 Projet : Boîte à outils pour électronicien
-Version : 0.4
-Date : 21.05.2024
+Version : 0.5
+Date : 23.05.2024
 """
 import tkinter
 import loi_ohm

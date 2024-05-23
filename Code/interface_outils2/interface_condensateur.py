@@ -1,7 +1,7 @@
 """
 Auteur : Adam Sifate
 Projet : Boîte à outils pour électronicien
-Version : 0.2
+Version : 0.3
 Date : 23.05.2024
 """
 

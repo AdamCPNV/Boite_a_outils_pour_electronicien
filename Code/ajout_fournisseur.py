@@ -9,8 +9,12 @@ from integration import IntergationDB
 
 def ajout_fournisseur(nom_fournisseur, addresse_fournisseur, numero_telephone, text_validation):
     bdd = IntergationDB()
-    bdd.insertion(nom_fournisseur, addresse_fournisseur, numero_telephone)
-    text_validation.config(text = "Le fournisseur {} à bien été ajouter".format(nom_fournisseur))
+    try:
+        bdd.insertion(nom_fournisseur, addresse_fournisseur, numero_telephone)
+        text_validation.config(text = "Le fournisseur {} à bien été ajouter".format(nom_fournisseur))
+    except:
+        text_validation.config(text = "Entrez un numero de téléphone uniquement composer de chiffre sans espace")
+
     
 
 

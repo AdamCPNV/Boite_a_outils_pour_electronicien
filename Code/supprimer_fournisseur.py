@@ -9,9 +9,11 @@ from integration import IntergationDB
 
 def suppression_fournisseur(numero_telephone, text_validation):
     bdd = IntergationDB()
-    bdd.suppertion(numero_telephone)
-    text_validation.config(text = "Le fournisseur {} à bien été supprimer".format(numero_telephone))
-
+    try:
+        bdd.suppertion(numero_telephone)
+        text_validation.config(text = "Le fournisseur {} à bien été supprimer".format(numero_telephone))
+    except:
+        text_validation.config(text = "Entrez uniquement un numero de téléphone composer de nombre sans espace")
 
 #affiche l'interface graphique
 def supprimer_fournisseur(maitre):
