@@ -14,7 +14,7 @@ import trouve_produit_inserer
 def recuperer_champs(reistance, tao, bouton_rechercher,maitre, text_taille_condensateur):
     condensateur = trouve_produit_inserer.condensateur_inserer(float(tao), float(reistance))
     text_taille_condensateur.config(text = "Votre condensateur sera de :" + str(condensateur[0]) + "et mettra " + str(condensateur[1]) + "pour se recharger")
-    bouton_rechercher.config(command= lambda :(change_frame(maitre, interface_choix_produit.affichage_produit(maitre,1,condensateur[0]))))
+    bouton_rechercher.config(command= lambda :(change_frame(maitre, interface_choix_produit.affichage_produit(maitre,2,condensateur[0], taille= condensateur[1]))))
 
 
 def interface_condensateur_outils2(maitre):
