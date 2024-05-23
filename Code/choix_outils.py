@@ -9,9 +9,9 @@ from changement_frame import change_frame
 import outils1
 import interface_outils2.outils2 as outils2
 import outils3
-import ajout_fournisseur
-import modifier_fournisseur
-import supprimer_fournisseur
+import gestion_fournisseur.ajout_fournisseur as ajout_fournisseur
+import gestion_fournisseur.modifier_fournisseur as modifier_fournisseur
+import gestion_fournisseur.supprimer_fournisseur as supprimer_fournisseur
 
 
 # permet de differencier quelle outils à été choisi
