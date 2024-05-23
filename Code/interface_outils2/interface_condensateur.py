@@ -12,6 +12,14 @@ import trouve_produit_inserer
 
 # récupere les donnée entrer est affiche le résultat
 def recuperer_champs(reistance, tao, bouton_rechercher,maitre, text_taille_condensateur):
+    try:
+        tao = float(tao)
+        text_taille_condensateur = float(text_taille_condensateur)
+    except:
+        bouton_rechercher.config(command = "")
+        text_taille_condensateur.config(text = """Veuillez entrez: \n 
+                             Un nombre composer uniquement de chiffre allant de 0 à 9 \n 
+                             Content  si néssaisaire 1 seul point par nombre décimale(pas de virgule) \n Pas de lettre""")
     condensateur = trouve_produit_inserer.condensateur_inserer(float(tao), float(reistance))
     text_taille_condensateur.config(text = "Votre condensateur sera de :" + str(condensateur[0]) + "et mettra " + str(condensateur[1]) + "pour se recharger")
     bouton_rechercher.config(command= lambda :(change_frame(maitre, interface_choix_produit.affichage_produit(maitre,2,condensateur[0], taille= condensateur[1]))))
