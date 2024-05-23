@@ -1,8 +1,8 @@
 """
 Auteur : Adam Sifate
 Projet : Boîte à outils pour électronicien
-Version : 0.3
-Date : 21.05.2024
+Version : 0.4
+Date : 23.05.2024
 """
 
 import trouve_resistance_E12
@@ -17,7 +17,12 @@ def resistance_inserer(temps_recharge, capcaciter_condensateur):
 #calcule le temps de recharge réel du condensateur en fonction de condensateur choisi
 def condensateur_inserer(temps_recharge, resistance):
     capcaciter_condensateur =  temps_recharge/resistance
-    condensateur = trouve_resistance_E12.valeur_proche(capcaciter_condensateur,trouve_resistance_E12.inferieur_proche_E12(capcaciter_condensateur, True), trouve_resistance_E12.supperieur_proche_E12(capcaciter_condensateur, True))
+    minimal = trouve_resistance_E12.inferieur_proche_E12(capcaciter_condensateur, True)
+    maximal = trouve_resistance_E12.supperieur_proche_E12(capcaciter_condensateur, True)
+
+    print(minimal, maximal)
+
+    condensateur = trouve_resistance_E12.valeur_proche(capcaciter_condensateur, minimal, maximal)
     temps_recharge_reel = resistance * condensateur
     return condensateur, temps_recharge_reel
 

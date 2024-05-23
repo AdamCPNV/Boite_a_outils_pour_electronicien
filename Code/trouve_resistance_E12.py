@@ -1,8 +1,8 @@
 """
 Auteur : Adam Sifate
 Projet : Boîte à outils pour électronicien
-Version : 0.4
-Date : 21.05.2024
+Version : 0.5
+Date : 23.05.2024
 """
 
 #SERIE_E12
@@ -13,9 +13,10 @@ SERIE_E6 = [1, 1.5, 2.2, 3.3, 4.7, 6.8]
 def supperieur_proche_E12(resistance, serie_E6 = False):
     if serie_E6:
          serie = SERIE_E6
+         i = 0.00000001
     else:
          serie = SERIE_E12
-    i = 0.1
+         i = 0.1
     while True :
         i *= 10
         for resistance_E12 in serie:
@@ -46,7 +47,6 @@ def inferieur_proche_E12(resistance, serie_E6 = False):
                     if ancienne_difference > difference:
                          ancienne_difference = difference
                          ancien_resistance_E12 = resistance_E12 * i
-                         None
                     else:
                         return (resistance_E12 * i) /10000000
             elif resulta < 1: 

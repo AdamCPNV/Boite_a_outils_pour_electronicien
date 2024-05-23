@@ -1,24 +1,20 @@
 """
 Auteur : Adam Sifate
 Projet : Boîte à outils pour électronicien
-Version : 0.1
-Date : 21.05.2024
+Version : 0.2
+Date : 23.05.2024
 """
 
 import tkinter
 from changement_frame import change_frame
 import interface_choix_produit
-import trouve_resistance_E12
 import trouve_produit_inserer
 
 # récupere les donnée entrer est affiche le résultat
 def recuperer_champs(reistance, tao, bouton_rechercher,maitre, text_taille_condensateur):
-    condensateur = trouve_produit_inserer.condensateur_inserer(tao, reistance)
-    condensateur_reel = 
-    text_taille_condensateur.config(text "Votre condensateur sera de :" + condensateur_reel + "et mettra ")
-    taille_reistance.config(text = " Si vous cherchez une reistance elle sera de : " + str(resltat_reistance[0]))
-    temps_charge_reel_reistance.config(text = " le temps de charge réel sera de  : " + str(resltat_reistance[1]))
-    bouton_rechercher.config(command= lambda :(change_frame(maitre, interface_choix_produit.affichage_produit(maitre,1,resltat_reistance[0]))))
+    condensateur = trouve_produit_inserer.condensateur_inserer(float(tao), float(reistance))
+    text_taille_condensateur.config(text = "Votre condensateur sera de :" + str(condensateur[0]) + "et mettra " + str(condensateur[1]) + "pour se recharger")
+    bouton_rechercher.config(command= lambda :(change_frame(maitre, interface_choix_produit.affichage_produit(maitre,1,condensateur[0]))))
 
 
 def interface_condensateur_outils2(maitre):
@@ -33,14 +29,12 @@ def interface_condensateur_outils2(maitre):
     bouton_rechercher = tkinter.Button(frame, text="Recherche produit")
 
     bouton_calculer = tkinter.Button(frame, text="Calculer", command = lambda :(recuperer_champs(
-        entrer_temps_charge_condensateur.get(),
         entrer_capaciter.get(),
-        text_temps_charge_reel,
-        text_taille_condensateur,
+        entrer_temps_charge_condensateur.get(),
         bouton_rechercher,
-        maitre
+        frame,
+        text_taille_condensateur
         )))
-
 
     text_taille_condensateur = tkinter.Label(frame, text="")
     text_temps_charge_reel = tkinter.Label(frame, text="")
