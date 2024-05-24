@@ -1,7 +1,7 @@
 """
 Auteur : Adam Sifate
 Projet : Boîte à outils pour électronicien
-Version : 0.4
+Version : 0.5
 Date : 24.05.2024
 """
 
@@ -9,6 +9,11 @@ import tkinter
 import trouve_resistance_serie
 from changement_frame import change_frame
 import interface_choix_produit
+
+import choix_outils
+
+def retour(maitre):
+    change_frame(maitre, choix_outils.choix_des_outils(maitre))
 
 def recupere_champs(valeur_rechercher, text_resultat, bouton_rechercher, maitre):
 
@@ -32,7 +37,7 @@ def outils3(maitre):
 
     frame = tkinter.Frame(maitre)
     
-    text_total_resitance_serie = tkinter.Label(frame, text = "Quelle valeur de résistance en serie voulez vous optenir :")
+    text_total_resitance_serie = tkinter.Label(frame, text = "Quelle valeur de résistance en serie voulez vous optenir (en Ohm):")
     entrer_total_resistance_serie = tkinter.Entry(frame)
     bouton_rechercher = tkinter.Button(frame, text= "Rechercher produit")
     bouton_calculer = tkinter.Button(frame, text = "calculer", command= lambda : recupere_champs(entrer_total_resistance_serie.get()
@@ -42,7 +47,7 @@ def outils3(maitre):
 
     text_resultat = tkinter.Label(frame, text = "")
 
-
+    bouton_retour = tkinter.Button(frame,text= "Retour", command=lambda:(retour(maitre)))
 
 
     text_total_resitance_serie.grid(row = 0, column = 0)
@@ -50,6 +55,7 @@ def outils3(maitre):
     bouton_calculer.grid(row = 1, column = 2)
     text_resultat.grid(row  = 2, column = 0)
     bouton_rechercher.grid(row = 3, column = 0)
+    bouton_retour.grid(row=4, column=0)
     
 
     return frame

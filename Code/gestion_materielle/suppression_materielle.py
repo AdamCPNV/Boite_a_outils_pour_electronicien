@@ -11,7 +11,7 @@ def ajout_fournisseur(nom_fournisseur, addresse_fournisseur, numero_telephone, t
     bdd = IntergationDB()
     try:
         bdd.insertion(nom_fournisseur, addresse_fournisseur, numero_telephone)
-        text_validation.config(text = "Le fournisseur {} à bien été ajouter".format(nom_fournisseur))
+        text_validation.config(text = "Le fournisseur {} à bien été supprimer".format(nom_fournisseur))
     except:
         text_validation.config(text = "Entrez un numero de téléphone uniquement composer de chiffre sans espace")
 

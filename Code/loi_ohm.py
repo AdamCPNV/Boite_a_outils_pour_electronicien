@@ -1,7 +1,7 @@
 """
 Auteur : Adam Sifate
 Projet : Boîte à outils pour électronicien
-Version : 0.3
+Version : 0.4
 Date : 24.05.2024
 """
 import trouve_resistance_E12

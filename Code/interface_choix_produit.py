@@ -1,13 +1,17 @@
 """
 Auteur : Adam Sifate
 Projet : Boîte à outils pour électronicien
-Version : 0.2
-Date : 21.05.2024
+Version : 0.3
+Date : 24.05.2024
 """
 
 import tkinter
 import integration
+from changement_frame import change_frame
+import choix_outils
 
+def retour(maitre):
+    change_frame(maitre, choix_outils.choix_des_outils(maitre))
 
 def rechercher_produit(type, valeur, taille):
     bdd = integration.IntergationDB()
@@ -39,6 +43,9 @@ def affichage_produit(maitre, type, valeur, taille = 0):
         for j in range(len(tableaux)):
             f = tkinter.Label(frame, text= resultat[i][j])
             f.grid(row=i + 1, column=j)
+
+    bouton_retour = tkinter.Button(frame, text= "Retour", command=lambda:(retour(maitre)))
+    bouton_retour.grid()
 
     return frame
 
