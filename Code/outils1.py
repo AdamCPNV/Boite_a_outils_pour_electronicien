@@ -1,8 +1,8 @@
 """
 Auteur : Adam Sifate
 Projet : Boîte à outils pour électronicien
-Version : 0.4
-Date : 21.05.2024
+Version : 0.5
+Date : 23.05.2024
 """
 import tkinter
 import loi_ohm
@@ -11,10 +11,18 @@ import interface_choix_produit
 
 #Recupere les valeurs insérer par l'utilisateur et affiche les résultat
 
-def recuprer_champs(entrer_tension_alimentation, entrer_courent_max, entrer_tension_seuil_led, text_resistance, text_courrant_avec_resistance, text_puissance_dissiper, bouton_rechercher, maitre):
-    tension_alimentation = float(entrer_tension_alimentation.get())
-    courrant_max = float(entrer_courent_max.get())
-    tension_seuil_led = float(entrer_tension_seuil_led.get())
+def recuprer_champs(tension_alimentation, courrant_max, tension_seuil_led, text_resistance, text_courrant_avec_resistance, text_puissance_dissiper, bouton_rechercher, maitre):
+    try:
+        tension_alimentation = float(tension_alimentation)
+        courrant_max = float(courrant_max)
+        tension_seuil_led = float(tension_seuil_led)
+    except:
+        bouton_rechercher.config(command = "")
+        text_resistance.config(text = """Veuillez entrez: \n 
+                             Un nombre composer uniquement de chiffre allant de 0 à 9 \n 
+                             Content  si néssaisaire 1 seul point par nombre décimale(pas de virgule) \n Pas de lettre""")
+        text_courrant_avec_resistance.config(text = "")
+        text_puissance_dissiper.config(text = "")       
     resultat = loi_ohm.resistance_inserer(tension_alimentation,tension_seuil_led,courrant_max)
     if resultat == False:
         text_resistance.config(text= "La valeur de la résistance a installer est trop grande (dépasse les 10 mega ohm)")
@@ -46,9 +54,10 @@ def outils1(maitre):
     bouton_recherche = tkinter.Button(frame, text="Recherche produit")
 
     bouton_calculer = tkinter.Button(frame,text="Calculer", command = lambda :(recuprer_champs(
-        entrer_tension_alimentation,
-        entrer_courent_max, 
-        entrer_tension_seuil_led,text_resistance,
+        entrer_tension_alimentation.get(),
+        entrer_courent_max.get(), 
+        entrer_tension_seuil_led.get(),
+        text_resistance,
         text_courrant_avec_resistance, 
         text_puissance_dissiper,
         bouton_recherche,

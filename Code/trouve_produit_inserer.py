@@ -25,6 +25,3 @@ def condensateur_inserer(temps_recharge, resistance):
     condensateur = trouve_resistance_E12.valeur_proche(capcaciter_condensateur, minimal, maximal)
     temps_recharge_reel = resistance * condensateur
     return condensateur, temps_recharge_reel
-
-
-print(condensateur_inserer(0.12,27000)[0])

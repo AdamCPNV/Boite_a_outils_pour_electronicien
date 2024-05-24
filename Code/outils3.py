@@ -1,8 +1,8 @@
 """
 Auteur : Adam Sifate
 Projet : Boîte à outils pour électronicien
-Version : 0.2
-Date : 21.05.2024
+Version : 0.4
+Date : 24.05.2024
 """
 
 import tkinter
@@ -10,11 +10,22 @@ import trouve_resistance_serie
 from changement_frame import change_frame
 import interface_choix_produit
 
-def recupere_champs(entrer_total_resistance_serie, text_resultat, bouton_rechercher, maitre):
-    valeur_rechercher = float(entrer_total_resistance_serie.get())
-    resultat = trouve_resistance_serie.trouve_paire_resistance(valeur_rechercher)
-    text_resultat.config(text = " Les résistances trouvé sont " + str(resultat[0]) + " et " + str(resultat[1]))
-    bouton_rechercher.config(command= lambda :(change_frame(maitre, interface_choix_produit.affichage_produit(maitre,1,resultat[0], resultat[1]))))
+def recupere_champs(valeur_rechercher, text_resultat, bouton_rechercher, maitre):
+
+    try:
+        valeur_rechercher = float(valeur_rechercher)
+    except:
+        bouton_rechercher.config(command = "")
+        text_resultat.config(text = """Veuillez entrez: \n 
+                             Un nombre composer uniquement de chiffre allant de 0 à 9 \n 
+                             Content  si néssaisaire 1 seul point par nombre décimale(pas de virgule) \n Pas de lettre""")
+
+    resultat = trouve_resistance_serie.trouve_paire_reistance(valeur_rechercher)
+    if resultat == False:
+        text_resultat.config(text = "Resistance trop grande")
+    else:
+        text_resultat.config(text = " Les résistances trouvé sont " + str(resultat[0]) + " et " + str(resultat[1]) + "ce qui donne un total de : " + str(resultat[2]) + "Avec une marge de erreur de " + str(resultat[3]) + "%")
+        bouton_rechercher.config(command= lambda :(change_frame(maitre, interface_choix_produit.affichage_produit(maitre,1,resultat[0], resultat[1]))))
 
 # affiche l'interface graphique
 def outils3(maitre):
@@ -24,7 +35,10 @@ def outils3(maitre):
     text_total_resitance_serie = tkinter.Label(frame, text = "Quelle valeur de résistance en serie voulez vous optenir :")
     entrer_total_resistance_serie = tkinter.Entry(frame)
     bouton_rechercher = tkinter.Button(frame, text= "Rechercher produit")
-    bouton_calculer = tkinter.Button(frame, text = "calculer", command= lambda : recupere_champs(entrer_total_resistance_serie,text_resultat, bouton_rechercher, frame))
+    bouton_calculer = tkinter.Button(frame, text = "calculer", command= lambda : recupere_champs(entrer_total_resistance_serie.get()
+                                                                                                 ,text_resultat, 
+                                                                                                 bouton_rechercher, 
+                                                                                                 frame))
 
     text_resultat = tkinter.Label(frame, text = "")
 

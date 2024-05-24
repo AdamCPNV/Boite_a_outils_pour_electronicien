@@ -1,17 +1,19 @@
 """
 Auteur : Adam Sifate
 Projet : Boîte à outils pour électronicien
-Version : 0.1
-Date : 16.05.2024
+Version : 0.2
+Date : 23.05.2024
 """
 import tkinter
 from integration import IntergationDB
 
 def suppression_fournisseur(numero_telephone, text_validation):
     bdd = IntergationDB()
-    bdd.suppertion(numero_telephone)
-    text_validation.config(text = "Le fournisseur {} à bien été supprimer".format(numero_telephone))
-
+    try:
+        bdd.suppertion(numero_telephone)
+        text_validation.config(text = "Le fournisseur {} à bien été supprimer".format(numero_telephone))
+    except:
+        text_validation.config(text = "Entrez uniquement un numero de téléphone composer de nombre sans espace")
 
 #affiche l'interface graphique
 def supprimer_fournisseur(maitre):
