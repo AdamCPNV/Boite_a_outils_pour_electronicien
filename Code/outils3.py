@@ -1,8 +1,8 @@
 """
 Auteur : Adam Sifate
 Projet : Boîte à outils pour électronicien
-Version : 0.3
-Date : 23.05.2024
+Version : 0.4
+Date : 24.05.2024
 """
 
 import tkinter
@@ -20,9 +20,12 @@ def recupere_champs(valeur_rechercher, text_resultat, bouton_rechercher, maitre)
                              Un nombre composer uniquement de chiffre allant de 0 à 9 \n 
                              Content  si néssaisaire 1 seul point par nombre décimale(pas de virgule) \n Pas de lettre""")
 
-    resultat = trouve_resistance_serie.trouve_paire_resistance(valeur_rechercher)
-    text_resultat.config(text = " Les résistances trouvé sont " + str(resultat[0]) + " et " + str(resultat[1]))
-    bouton_rechercher.config(command= lambda :(change_frame(maitre, interface_choix_produit.affichage_produit(maitre,1,resultat[0], resultat[1]))))
+    resultat = trouve_resistance_serie.trouve_paire_reistance(valeur_rechercher)
+    if resultat == False:
+        text_resultat.config(text = "Resistance trop grande")
+    else:
+        text_resultat.config(text = " Les résistances trouvé sont " + str(resultat[0]) + " et " + str(resultat[1]) + "ce qui donne un total de : " + str(resultat[2]) + "Avec une marge de erreur de " + str(resultat[3]) + "%")
+        bouton_rechercher.config(command= lambda :(change_frame(maitre, interface_choix_produit.affichage_produit(maitre,1,resultat[0], resultat[1]))))
 
 # affiche l'interface graphique
 def outils3(maitre):
