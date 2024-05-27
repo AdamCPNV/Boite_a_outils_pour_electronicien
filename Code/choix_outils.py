@@ -12,6 +12,10 @@ import outils3
 import gestion_fournisseur.ajout_fournisseur as ajout_fournisseur
 import gestion_fournisseur.modifier_fournisseur as modifier_fournisseur
 import gestion_fournisseur.supprimer_fournisseur as supprimer_fournisseur
+import gestion_materielle.ajout_materielle as ajout_materielle
+import gestion_materielle.modification_materielle as modification_materielle
+import gestion_materielle.suppression_materielle as suppression_materielle
+
 
 
 # permet de differencier quelle outils à été choisi
@@ -30,6 +34,12 @@ def changement_menu(maitre, outils):
             change_frame(maitre, modifier_fournisseur.modifier_fournisseur(maitre))
         case 6:
             change_frame(maitre, supprimer_fournisseur.supprimer_fournisseur(maitre))
+        case 7: 
+            change_frame(maitre, ajout_materielle.ajouter_materiel(maitre))
+        case 8 :
+            change_frame(maitre, modification_materielle.modifier_materiel(maitre))
+        case 9 :
+            change_frame(maitre, suppression_materielle.supprimer_materiel(maitre))
 
 # affiche l'interface graphique
 def choix_des_outils(maitre):
@@ -42,6 +52,10 @@ def choix_des_outils(maitre):
     modifier_fournisseur = tkinter.Button(frame, text="Modifier les coordonné de un fournisseur", command=lambda : changement_menu(frame, 5))
     supprimer_fournisseur = tkinter.Button(frame, text="Supprimer un fournisseur", command=lambda : changement_menu(frame, 6))
 
+    ajout_materielle = tkinter.Button(frame, text="Ajouter materielle", command=lambda : changement_menu(frame, 7))
+    modifier_materielle = tkinter.Button(frame, text="Modification materielle", command=lambda : changement_menu(frame, 8))
+    suppresion_materielle= tkinter.Button(frame, text="Suprression materielle", command=lambda : changement_menu(frame, 9))
+
     titre.grid(row = 0, column = 0, columnspan= 2, padx= 5, pady= 5)
     outils1.grid(row = 1,column = 0, columnspan= 2, padx= 5, pady= 5)
     outils2.grid(row = 2, column = 0, columnspan= 2, padx= 5, pady= 5)
@@ -49,5 +63,8 @@ def choix_des_outils(maitre):
     ajouter_fournisseur.grid(row = 4, column = 0, padx= 5, pady= 5)
     modifier_fournisseur.grid(row = 4, column = 1, padx= 5, pady= 5)
     supprimer_fournisseur.grid(row = 5, column= 0, columnspan= 2, padx= 5, pady= 5)
+    ajout_materielle.grid(row=6, column= 0, padx= 5, pady= 5)
+    modifier_materielle.grid(row=6, column=1, padx= 5, pady= 5)
+    suppresion_materielle.grid(row=7, column=0, columnspan= 2, padx= 5, pady= 5)
 
     return frame
