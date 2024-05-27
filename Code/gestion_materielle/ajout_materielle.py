@@ -7,6 +7,12 @@ Date : 23.05.2024
 import tkinter
 from integration import IntergationDB
 
+from changement_frame import change_frame
+import choix_outils
+
+def retour(maitre):
+    change_frame(maitre, choix_outils.choix_des_outils(maitre))
+
 def ajout_fournisseur(nom_fournisseur, addresse_fournisseur, numero_telephone, text_validation):
     bdd = IntergationDB()
     try:
@@ -38,9 +44,11 @@ def ajouter_materiel(maitre):
     text_num_article = tkinter.Label(frame, text= "Entrez le numero de article")
     entrer_num_article = tkinter.Entry(frame)
 
-    bouton_ajoute = tkinter.Button(text= "Ajouté")
+    bouton_ajoute = tkinter.Button(frame,text= "Ajouté")
 
     message_info = tkinter.Label(frame, text = "")
+
+    bouton_retour = tkinter.Button(frame,text="Retoure", command=lambda:(retour(frame)))
 
     text_valeur.grid(row=0, column=0)
     entrer_valeur.grid(row=0, column= 1)
@@ -57,7 +65,9 @@ def ajouter_materiel(maitre):
     text_num_article.grid(row=4, column= 0)
     entrer_num_article.grid(row=4, column= 1)
     
-    bouton_ajoute.grid(row=2, column=0)
+    bouton_ajoute.grid(row=5, column=1)
 
-    message_info.grid(row=3, column= 0)
+    message_info.grid(row=6, column= 0)
+
+    bouton_retour.grid(row=7, column=0)
     return frame

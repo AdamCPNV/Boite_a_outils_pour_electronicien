@@ -8,7 +8,6 @@ import tkinter
 from integration import IntergationDB
 
 from changement_frame import change_frame
-
 import choix_outils
 
 def retour(maitre):
