@@ -1,8 +1,8 @@
 """
 Auteur : Adam Sifate
 Projet : Boîte à outils pour électronicien
-Version : 0.3
-Date : 24.05.2024
+Version : 0.4
+Date : 27.05.2024
 """
 SERIE = [1, 1.2, 1.5, 1.8, 2.2, 2.7, 3.3, 3.9, 4.7, 5.6, 6.8, 8.2]
 
@@ -11,6 +11,9 @@ def trouve_paire_reistance(cible):
 
     if cible > 10000000:
         return False
+    
+    if cible <= 1:
+        return 1, 0, 1,round((1 - cible) /cible,3)
         
     somme_proche = None
     marge_erreur_proche = None
