@@ -1,11 +1,16 @@
 """
 Auteur : Adam Sifate
 Projet : Boîte à outils pour électronicien
-Version : 0.2
-Date : 23.05.2024
+Version : 0.3
+Date : 27.05.2024
 """
 import tkinter
 import integration
+from changement_frame import change_frame
+import choix_outils
+
+def retour(maitre):
+    change_frame(maitre, choix_outils.choix_des_outils(maitre))
 
 def modification_fournisseur(numero_telephone, nom_fournisseur, nouvelle_addresse, nouveaux_numero_telephone, text_info):
     bdd = integration.IntergationDB()
@@ -53,6 +58,8 @@ def modifier_fournisseur(maitre):
     text_nouveaux_numero_telephone = tkinter.Label(frame, text="Enrez le nouveaux numero de téléphone : ")
     entrer_nouveaux_numero_telephone = tkinter.Entry(frame)
 
+    bouton_retour = tkinter.Button(frame, text="Retour", command= lambda:(retour(maitre)))
+
     text_info.grid(row=0, column=0)
 
     text_numero_telephone_fournisseur.grid(row=1, column=0)
@@ -68,6 +75,7 @@ def modifier_fournisseur(maitre):
     entrer_nouveaux_numero_telephone.grid(row=5, column= 1)
 
     bouton_rechercher.grid(row= 6, column= 1)
+    bouton_retour.grid(row=7, column=0)
 
 
     return frame
