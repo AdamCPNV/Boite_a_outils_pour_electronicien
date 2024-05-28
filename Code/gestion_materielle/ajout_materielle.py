@@ -1,8 +1,8 @@
 """
 Auteur : Adam Sifate
 Projet : Boîte à outils pour électronicien
-Version : 0.1
-Date : 23.05.2024
+Version : 0.2
+Date : 28.05.2024
 """
 import tkinter
 from integration import IntergationDB
@@ -13,13 +13,13 @@ import choix_outils
 def retour(maitre):
     change_frame(maitre, choix_outils.choix_des_outils(maitre))
 
-def ajout_fournisseur(nom_fournisseur, addresse_fournisseur, numero_telephone, text_validation):
+def ajout_composant(type, valeur, taille, prix, numer_article, text_validation):
     bdd = IntergationDB()
     try:
-        bdd.insertion(nom_fournisseur, addresse_fournisseur, numero_telephone)
-        text_validation.config(text = "Le fournisseur {} à bien été ajouter".format(nom_fournisseur))
+        bdd.insertion_produit(type, valeur, taille, prix, numer_article)
+        text_validation.config(text = "Le compostant {} à bien été ajouter".format(numer_article))
     except:
-        text_validation.config(text = "Entrez un numero de téléphone uniquement composer de chiffre sans espace")
+        text_validation.config(text = "tout les champs a par le numero de numero de article doive etre composer uniquement de chiffre ")
 
     
 
@@ -28,6 +28,9 @@ def ajout_fournisseur(nom_fournisseur, addresse_fournisseur, numero_telephone, t
 #affiche l'interface graphique
 def ajouter_materiel(maitre):
     frame = tkinter.Frame(maitre)
+
+    text_type = tkinter.Label(frame, text="Entrez le type du composant")
+    entrer_type = tkinter.Entry(frame)
 
     text_valeur = tkinter.Label(frame, text = "Entrer la valeur(Ohm, Farad) du composant")
     entrer_valeur = tkinter.Entry(frame)
@@ -43,31 +46,37 @@ def ajouter_materiel(maitre):
 
     text_num_article = tkinter.Label(frame, text= "Entrez le numero de article")
     entrer_num_article = tkinter.Entry(frame)
-
-    bouton_ajoute = tkinter.Button(frame,text= "Ajouté")
+    
+    text_validation = tkinter.Label(frame, text="")
+    bouton_ajoute = tkinter.Button(frame,text= "Ajouté", command=lambda:(ajout_composant(entrer_type.get(), entrer_valeur.get(),entrer_taille.get(),entrer_prix.get(),entrer_num_article.get(),text_validation)))
 
     message_info = tkinter.Label(frame, text = "")
 
     bouton_retour = tkinter.Button(frame,text="Retoure", command=lambda:(retour(frame)))
 
-    text_valeur.grid(row=0, column=0)
-    entrer_valeur.grid(row=0, column= 1)
+    text_type.grid(row=0,column=0)
+    entrer_type.grid(row=0, column=1)
 
-    text_taille.grid(row=1, column=0)
-    entrer_taille.grid(row=1, column=1)
+    text_valeur.grid(row=1, column=0)
+    entrer_valeur.grid(row=1, column= 1)
 
-    text_prix.grid(row=2, column=0)
-    entrer_prix.grid(row=2,column= 1)
+    text_taille.grid(row=2, column=0)
+    entrer_taille.grid(row=2, column=1)
 
-    text_num_fabrican.grid(row=3, column=0)
-    entrer_num_fabrican.grid(row=3, column=1)
+    text_prix.grid(row=3, column=0)
+    entrer_prix.grid(row=3,column= 1)
 
-    text_num_article.grid(row=4, column= 0)
-    entrer_num_article.grid(row=4, column= 1)
-    
-    bouton_ajoute.grid(row=5, column=1)
+    text_num_fabrican.grid(row=4, column=0)
+    entrer_num_fabrican.grid(row=4, column=1)
 
-    message_info.grid(row=6, column= 0)
+    text_num_article.grid(row=5, column= 0)
+    entrer_num_article.grid(row=5, column= 1)
 
-    bouton_retour.grid(row=7, column=0)
+    bouton_ajoute.grid(row=6, column=1)
+
+    message_info.grid(row=7, column= 0)
+
+    bouton_retour.grid(row=8, column=0)
+
+    text_validation.grid()
     return frame

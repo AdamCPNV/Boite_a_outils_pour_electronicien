@@ -1,8 +1,8 @@
 """
 Auteur : Adam Sifate
 Projet : Boîte à outils pour électronicien
-Version : 0.3
-Date : 17.05.2024
+Version : 0.5
+Date : 28.05.2024
 """
 
 import mysql.connector
@@ -31,6 +31,11 @@ class IntergationDB():
         requete = "insert into supplier (Name,Address,phone_number) value ('{}','{}','{}');"
         self.mycursor.execute(requete .format(nom, addresse, numero_telephone))
         self.mydb.commit()
+
+    def insertion_produit(self,type, valeur, taille, prix, numer_article):       
+        requete = "INSERT INTO product (Type, Value, Size, Price, `manufacturer-reference`)VALUES('{}','{}','{}','{}','{}')"
+        self.mycursor.execute(requete.format(type, valeur, taille, prix, numer_article))
+        self.mydb.commit()     
     
     def suppertion(self, numero_telephone):
         requete = "DELETE FROM supplier WHERE phone_number = {};"
