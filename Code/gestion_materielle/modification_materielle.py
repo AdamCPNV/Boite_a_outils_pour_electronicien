@@ -42,15 +42,15 @@ def modification_composant(type, valeur, taille, prix, numero_article, nouveaux_
         numero_article = "'" + numero_article + "'"   
 
     if nouveaux_numero_article == "":
-        nouveaux_numero_article = "manufacturer-reference"
+        nouveaux_numero_article = numero_article
     else:
         nouveaux_numero_article = "'" + nouveaux_numero_article + "'"  
 
-  #  try:
-    bdd.modification_produit(type, valeur, taille, prix, numero_article, nouveaux_numero_article)
-    text_validation.config(text = "Les modifications ont été effectuer correctementn")
-   # except:
-    text_validation.config(text = "Entrez un numero de téléphone uniquement composer de chiffre sans espace")
+    try:
+        bdd.modification_produit(type, valeur, taille, prix, numero_article, nouveaux_numero_article)
+        text_validation.config(text = "Les modifications ont été effectuer correctementn")
+    except:
+        text_validation.config(text = "Entrez un numero de téléphone uniquement composer de chiffre sans espace")
 
     
 
