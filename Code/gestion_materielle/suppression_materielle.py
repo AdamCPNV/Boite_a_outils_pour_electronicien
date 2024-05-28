@@ -13,13 +13,13 @@ import choix_outils
 def retour(maitre):
     change_frame(maitre, choix_outils.choix_des_outils(maitre))
 
-def ajout_fournisseur(nom_fournisseur, addresse_fournisseur, numero_telephone, text_validation):
+def supprimer_fournisseur(numer_article, text_validation):
     bdd = IntergationDB()
     try:
-        bdd.insertion(nom_fournisseur, addresse_fournisseur, numero_telephone)
-        text_validation.config(text = "Le fournisseur {} à bien été supprimer".format(nom_fournisseur))
+        bdd.supprimer_produit(numer_article)
+        text_validation.config(text = "Le composant {} à bien été supprimer".format(numer_article))
     except:
-        text_validation.config(text = "Entrez un numero de téléphone uniquement composer de chiffre sans espace")
+        text_validation.config(text = "Une erreur c'est produit veuiller reseayer")
 
 #affiche l'interface graphique
 def supprimer_materiel(maitre):
@@ -27,8 +27,9 @@ def supprimer_materiel(maitre):
 
     numero_materielle = tkinter.Label(frame, text="Entrer le numero de materielle")
     enter_numero_materielle = tkinter.Entry(frame)
+    text_validation = tkinter.Label(frame, text="")
 
-    bouton_supprimer = tkinter.Button(frame, text="supprimer")
+    bouton_supprimer = tkinter.Button(frame, text="supprimer",command=lambda:supprimer_fournisseur(enter_numero_materielle.get(),text_validation))
 
     bouton_retour = tkinter.Button(frame, text="retour",command=lambda:retour(frame))
 
@@ -36,5 +37,6 @@ def supprimer_materiel(maitre):
     enter_numero_materielle.grid()
     bouton_supprimer.grid()
     bouton_retour.grid()
+    text_validation.grid()
 
     return frame

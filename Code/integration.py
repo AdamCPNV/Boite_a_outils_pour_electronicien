@@ -36,6 +36,11 @@ class IntergationDB():
         requete = "DELETE FROM supplier WHERE phone_number = {};"
         self.mycursor.execute(requete .format(numero_telephone))
         self.mydb.commit()
+    def supprimer_produit(self, numer_article):
+        requete = "delete from product where `manufacturer-reference` = '{}';"
+        self.mycursor.execute(requete .format(numer_article))
+        self.mydb.commit()
+
 
     def modification(self,numero_actuelle, nom, addresse, nouveaux_numero_telephone):
 
