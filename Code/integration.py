@@ -32,10 +32,15 @@ class IntergationDB():
         self.mycursor.execute(requete .format(nom, addresse, numero_telephone))
         self.mydb.commit()
 
-    def insertion_produit(self,type, valeur, taille, prix, numer_article):       
-        requete = "INSERT INTO product (Type, Value, Size, Price, `manufacturer-reference`)VALUES('{}','{}','{}','{}','{}')"
-        self.mycursor.execute(requete.format(type, valeur, taille, prix, numer_article))
+    def insertion_produit(self,type, valeur, taille, prix, reference_farbiquant, telephone, numer_article):       
+        requete1 =  """insert into product (Type, Value, Size, Price, `manufacturer-reference`) VALUES({},{},{},{},"{}");"""
+        requete2 = """insert into product_has_supplier (product_id,  Article_number, supplier_id)
+                        value (LAST_INSERT_ID(),{}, (select id from supplier where phone_number = {}));"""
+        self.mycursor.execute(requete1. format(type, valeur, taille, prix, reference_farbiquant))
         self.mydb.commit()     
+
+        self.mycursor.execute(requete2. format(numer_article,telephone))
+        self.mydb.commit()   
     
     def suppertion(self, numero_telephone):
         requete = "DELETE FROM supplier WHERE phone_number = {};"

@@ -13,7 +13,7 @@ import choix_outils
 def retour(maitre):
     change_frame(maitre, choix_outils.choix_des_outils(maitre))
 
-def modification_composant(type, valeur, taille, prix, numero_article, nouveaux_numero_article, text_validation):
+def modification_composant(type, valeur, taille, prix, numero_article, nouveaux_numero_article, numero_telephone, text_validation):
     bdd = IntergationDB()
 
     if type == "":
@@ -76,6 +76,9 @@ def modifier_materiel(maitre):
     text_entrer_nouveaux_num_article = tkinter.Label(frame, text="Entrer le nouveaux numero de article")
     entrer_nouveaux_num_article = tkinter.Entry(frame)
 
+    text_numero_fournisseur = tkinter.Label(frame, text="Entrer le numero de télàphone du fournisseur :")
+    entrer_num_telphone = tkinter.Entry(frame)
+
     bouton_ajoute = tkinter.Button(frame,text= "Modifier", command=lambda:(modification_composant(
         entrer_type.get(),
         entrer_valeur.get(),
@@ -83,9 +86,12 @@ def modifier_materiel(maitre):
         entrer_prix.get(),
         entrer_num_article.get(),
         entrer_nouveaux_num_article.get(),
+        entrer_num_telphone.get(),
         message_info
     )))
     bouton_retour = tkinter.Button(frame, text="Retour", command= lambda:(retour(frame)))
+
+
 
     message_info = tkinter.Label(frame, text = "")
 
@@ -112,5 +118,8 @@ def modifier_materiel(maitre):
 
     message_info.grid(row=7, column= 0)
 
-    bouton_retour.grid(row = 8, column=0)
+    text_numero_fournisseur.grid(row=8, column=0)
+    entrer_num_telphone.grid(row=8, column=1)
+
+    bouton_retour.grid(row = 9, column=0)
     return frame
