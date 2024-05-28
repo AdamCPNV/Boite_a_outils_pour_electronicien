@@ -53,6 +53,13 @@ class IntergationDB():
         self.mycursor.execute(requete .format(nom, addresse, nouveaux_numero_telephone, numero_actuelle ))
         self.mydb.commit()
 
+    def modification_produit(self,type, valeur, taille, prix, numero_article, nouveaux_numero_article):
+        
+        requete = "update product set type = {}, value = {}, Size = {}, price = {}, `manufacturer-reference` = {} where `manufacturer-reference` = {};"
+        print(requete)
+        self.mycursor.execute(requete .format(type, valeur, taille, prix, nouveaux_numero_article,  numero_article,))
+        self.mydb.commit()
+
     def rechercher_produit(self,type, valeur, taille):
         requete = """select  product.Price, product.`manufacturer-reference`,product.Type,  product.Value, product.Size, supplier.Name
         from product
