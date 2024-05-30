@@ -1,63 +1,60 @@
 """
 Auteur : Adam Sifate
 Projet : Boîte à outils pour électronicien
-Version : 0.1
-Date : 23.05.2024
+Version : 0.3
+Date : 30.05.2024
 """
 import tkinter
 from integration import IntergationDB
 
-def ajout_fournisseur(nom_fournisseur, addresse_fournisseur, numero_telephone, text_validation):
+from changement_frame import change_frame
+import choix_outils
+
+def retour(maitre):
+    """Retourne au menu précédent
+
+    Args:
+        maitre (widget):
+    """
+    change_frame(maitre, choix_outils.choix_des_outils(maitre))
+
+def supprimer_fournisseur(numer_article, text_validation):
+    """supprime du materielle (fonction a renomer)
+
+    Args:
+        numer_article (string)
+        text_validation (widget)
+    """
     bdd = IntergationDB()
     try:
-        bdd.insertion(nom_fournisseur, addresse_fournisseur, numero_telephone)
-        text_validation.config(text = "Le fournisseur {} à bien été ajouter".format(nom_fournisseur))
+        bdd.supprimer_produit(numer_article)
+        text_validation.config(text = "Le composant {} à bien été supprimer".format(numer_article))
     except:
-        text_validation.config(text = "Entrez un numero de téléphone uniquement composer de chiffre sans espace")
+        text_validation.config(text = "Une erreur c'est produit veuiller reseayer")
 
-    
+def supprimer_materiel(maitre):
+    """affiche l'interface de suppression de article
 
+    Args:
+        maitre (widget)
 
-
-#affiche l'interface graphique
-def ajouter_materiel(maitre):
+    Returns:
+        frame (widget)
+    """
     frame = tkinter.Frame(maitre)
 
-    text_valeur = tkinter.Text(frame, text = "Entrer la valeur(Ohm, Farad) du composant")
-    entrer_valeur = tkinter.Entry(frame)
+    numero_materielle = tkinter.Label(frame, text="Entrer le numero de materielle")
+    enter_numero_materielle = tkinter.Entry(frame)
+    text_validation = tkinter.Label(frame, text="")
 
-    text_taille = tkinter.Text(frame, text = "Entrez la taille(puissance max dissipée ou tension max) du composant :")
-    entrer_taille = tkinter.Entry(frame)
+    bouton_supprimer = tkinter.Button(frame, text="supprimer",command=lambda:supprimer_fournisseur(enter_numero_materielle.get(),text_validation))
 
-    text_prix = tkinter.Text(frame, text = "Entrer le prix :")
-    entrer_prix = tkinter.Entry(frame)
+    bouton_retour = tkinter.Button(frame, text="retour",command=lambda:retour(frame))
 
-    text_num_fabrican = tkinter.Text(frame, text = "Entre")
-    entrer_num_fabrican = tkinter.Entry(frame)
+    numero_materielle.grid()
+    enter_numero_materielle.grid()
+    bouton_supprimer.grid()
+    bouton_retour.grid()
+    text_validation.grid()
 
-    text_num_article = tkinter.Text(frame, text= "Entrez le numero de article")
-    entrer_num_article = tkinter.Entry(frame)
-
-    bouton_ajoute = tkinter.Button(text= "Ajouté")
-
-    message_info = tkinter.Text(frame, text = "")
-
-    text_valeur.grid(row=0, column=0)
-    entrer_valeur.grid(row=0, column= 1)
-
-    text_taille.grid(row=1, column=0)
-    entrer_taille.grid(row=1, column=1)
-
-    text_prix.grid(row=2, column=0)
-    entrer_prix.grid(row=2,column= 1)
-
-    text_num_fabrican.grid(row=3, column=0)
-    entrer_num_fabrican.grid(row=3, column=1)
-
-    text_num_article.grid(row=4, column= 0)
-    entrer_num_article.grid(row=4, column= 1)
-    
-    bouton_ajoute.grid(row=2, column=0)
-
-    message_info.grid(row=3, column= 0)
     return frame

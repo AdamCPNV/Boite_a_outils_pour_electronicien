@@ -1,16 +1,23 @@
 """
 Auteur : Adam Sifate
 Projet : Boîte à outils pour électronicien
-Version : 0.3
-Date : 24.05.2024
+Version : 0.5
+Date : 30.05.2024
 """
 import trouve_resistance_E12
 
-#perte en milliwatt
+
 PUISSANCE_DISIPER = [250,500,1000,2000,5000,10000]
 
-#Calcule le taux de perte à appliquer à une résistance
 def perte(perte):
+    """calcule la puissance dissipée 
+
+    Args:
+        perte (int,float):
+
+    Returns:
+        nombre: (int)
+    """
     perte = perte * 1000
     if perte > PUISSANCE_DISIPER[5]:
         return "Trop grand"
@@ -18,9 +25,19 @@ def perte(perte):
         if nombre >= perte:
             return nombre
 
-#Calcule la résistance à insérer ainsi que le courant réel est la puissance dissiper
-#Retourn False si la résistance est trop grande
 def resistance_inserer(tension_alimentation, tension_seul_led, courant_max):
+    """calcule la resistance a inserer, le courant réel
+
+    Args:
+        tension_alimentation (int, float)
+        tension_seul_led (int, float)
+        courant_max (int, float)
+
+    Returns:
+        resistance (int, float)
+        courant_reel (int, float)
+        puissance_dissiper (int)
+    """
     tension_reel = tension_alimentation - tension_seul_led
     resistance = tension_reel / courant_max
 

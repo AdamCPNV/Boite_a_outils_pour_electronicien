@@ -1,8 +1,8 @@
 """
 Auteur : Adam Sifate
 Projet : Boîte à outils pour électronicien
-Version : 0.2
-Date : 23.05.2024
+Version : 0.4
+Date : 30.05.2024
 """
 import tkinter
 from changement_frame import change_frame
@@ -11,11 +11,23 @@ import interface_choix_produit
 
 
 def retour(maitre):
+    """Retourne au menu précédent
+
+    Args:
+        maitre (widget):
+    """
     change_frame(maitre, outils2.outils2(maitre))
 
-
-# récupere les donnée entrer est affiche le résultat
 def recuperer_champs(condensateur, resistance, resultat, bouton_rechercher, maitre):
+    """ récupere les donnée entrer est affiche le résultat
+
+    Args:
+        condensateur (int, float)
+        resistance (int, float)
+        resultat (widget)
+        bouton_rechercher (widget)
+        maitre (widget)
+    """    """"""
     try :
         condensateur = float(condensateur)
         resistance = float(resistance)
@@ -25,19 +37,25 @@ def recuperer_champs(condensateur, resistance, resultat, bouton_rechercher, mait
                              Content  si néssaisaire 1 seul point par nombre décimale(pas de virgule) \n Pas de lettre""")
         bouton_rechercher.config(command = "")
     temps_de_charge = condensateur * resistance
-    resultat.config(text= "Le temps de charge du condensateur sera de : " + str(temps_de_charge))
+    resultat.config(text= "Le Tao en seconde est de : " + str(temps_de_charge))
     bouton_rechercher.config(command= lambda :(change_frame(maitre, interface_choix_produit.affichage_produit(maitre,2,condensateur, taille= temps_de_charge))))
 
-
-
 def interface_tao_outils2(maitre):
+    """affiche l'interface de clacule du TAO
+
+    Args:
+        maitre (widget)
+
+    Returns:
+        frame (widget)
+    """
 
     frame = tkinter.Frame(maitre)
 
-    text_resistance = tkinter.Label(frame, text="Entrez la taile de la résistance : ")
+    text_resistance = tkinter.Label(frame, text="Entrez la taile de la résistance (en Ohm) : ")
     entrer_resistance = tkinter.Entry(frame)
 
-    text_condensateur = tkinter.Label(frame, text= "Entrez la valeur du condensateur : ")
+    text_condensateur = tkinter.Label(frame, text= "Entrez la valeur du condensateur (en Farad): ")
     entrer_condensateur = tkinter.Entry(frame)
 
     bouton_rechercher = tkinter.Button(frame, text= " Rechercher")
