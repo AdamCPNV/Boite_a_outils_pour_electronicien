@@ -1,8 +1,8 @@
 """
 Auteur : Adam Sifate
 Projet : Boîte à outils pour électronicien
-Version : 0.3
-Date : 27.05.2024
+Version : 0.4
+Date : 30.05.2024
 """
 import tkinter
 from integration import IntergationDB
@@ -10,9 +10,20 @@ from changement_frame import change_frame
 import choix_outils
 
 def retour(maitre):
+    """Retourne au menu précédent
+
+    Args:
+        maitre (widget):
+    """
     change_frame(maitre, choix_outils.choix_des_outils(maitre))
 
 def suppression_fournisseur(numero_telephone, text_validation):
+    """supprime un fournisseur de la BD
+
+    Args:
+        numero_telephone (int)
+        text_validation (widget)
+    """
     bdd = IntergationDB()
     try:
         bdd.suppertion(numero_telephone)
@@ -20,8 +31,15 @@ def suppression_fournisseur(numero_telephone, text_validation):
     except:
         text_validation.config(text = "Entrez uniquement un numero de téléphone composer de nombre sans espace")
 
-#affiche l'interface graphique
 def supprimer_fournisseur(maitre):
+    """Affiche l'interface graphique de suppression de fournisseur
+
+    Args:
+        maitre (widget)
+
+    Returns:
+        frame (widget)
+    """
     frame = tkinter.Frame(maitre)
 
     text_numero_telephone_fournisseur = tkinter.Label(frame, text = "Entrez le numero de téléphone du fournisseur a supprimer :")

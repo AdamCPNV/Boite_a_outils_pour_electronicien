@@ -1,8 +1,8 @@
 """
 Auteur : Adam Sifate
 Projet : Boîte à outils pour électronicien
-Version : 0.3
-Date : 27.05.2024
+Version : 0.4
+Date : 30.05.2024
 """
 import tkinter
 from integration import IntergationDB
@@ -10,6 +10,11 @@ from changement_frame import change_frame
 import choix_outils
 
 def retour(maitre):
+    """Retourne au menu précédent
+
+    Args:
+        maitre (widget):
+    """
     change_frame(maitre, choix_outils.choix_des_outils(maitre))
 
 def ajout_fournisseur(nom_fournisseur, addresse_fournisseur, numero_telephone, text_validation):

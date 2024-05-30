@@ -13,7 +13,7 @@ values("Fourniseur 1","Rued du moulin 7",001112233),
 ("Fourniseur 2","Rued du moulin 8",011112233),
 ("Fourniseur 3","Rued du moulin 9",021112123);
 
-insert into product_has_supplier (product_id, supplier_id, Article_number)
+insert into product_has_supplier (product_id, supplier_id, article_number)
 value(1,1,"article 1" ),
 (2,1,"article 2"),
 (3,2,"article 1");

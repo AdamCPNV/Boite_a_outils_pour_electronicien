@@ -1,8 +1,8 @@
 """
 Auteur : Adam Sifate
 Projet : Boîte à outils pour électronicien
-Version : 0.3
-Date : 27.05.2024
+Version : 0.4
+Date : 30.05.2024
 """
 import tkinter
 import integration
@@ -10,9 +10,23 @@ from changement_frame import change_frame
 import choix_outils
 
 def retour(maitre):
+    """Retourne au menu précédent
+
+    Args:
+        maitre (widget):
+    """
     change_frame(maitre, choix_outils.choix_des_outils(maitre))
 
 def modification_fournisseur(numero_telephone, nom_fournisseur, nouvelle_addresse, nouveaux_numero_telephone, text_info):
+    """Modifie un fournisseur dans la BD
+
+    Args:
+        numero_telephone (int)
+        nom_fournisseur (string)
+        nouvelle_addresse (string)
+        nouveaux_numero_telephone (int)
+        text_info (widget)
+    """
     bdd = integration.IntergationDB()
 
     # mise en forme des données 
@@ -27,7 +41,7 @@ def modification_fournisseur(numero_telephone, nom_fournisseur, nouvelle_address
         nouvelle_addresse = "'" + nouvelle_addresse + "'"
 
     if nouveaux_numero_telephone == "":
-        nouveaux_numero_telephone = "PhoneNumber"
+        nouveaux_numero_telephone = numero_telephone
         
     try:
         bdd.modification(numero_telephone, nom_fournisseur, nouvelle_addresse, nouveaux_numero_telephone)
@@ -35,9 +49,15 @@ def modification_fournisseur(numero_telephone, nom_fournisseur, nouvelle_address
     except:
         text_info.config(text = "Remplisser les champs numero de téléphone avec uniquement des chiffres et sans espace")
 
-
-#affiche l'interface graphique
 def modifier_fournisseur(maitre):
+    """Affiche l'interface de modification de fournisseur
+
+    Args:
+        maitre (widget)
+
+    Returns:
+        frame (widget)
+    """
     frame = tkinter.Frame(maitre)
     text_info = tkinter.Label(frame, text= "Entrez le numero de téléphone actuelle puis entrez les information que vous voulez modifier \n Pour validé les modifcation appuier sur le bouton modifier")
     text_numero_telephone_fournisseur = tkinter.Label(frame, text= "Entret le numero_telephone du fournisseur a modifier : ")

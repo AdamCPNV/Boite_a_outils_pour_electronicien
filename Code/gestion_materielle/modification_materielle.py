@@ -1,19 +1,35 @@
 """
 Auteur : Adam Sifate
 Projet : Boîte à outils pour électronicien
-Version : 0.1
-Date : 23.05.2024
+Version : 0.2
+Date : 30.05.2024
 """
 import tkinter
 from integration import IntergationDB
-
 from changement_frame import change_frame
 import choix_outils
 
 def retour(maitre):
+    """Retourne au menu précédent
+
+    Args:
+        maitre (widget):
+    """
     change_frame(maitre, choix_outils.choix_des_outils(maitre))
 
 def modification_composant(type, valeur, taille, prix, numero_article, nouveaux_numero_article, numero_telephone, text_validation):
+    """modifie dans la BD un composant
+
+    Args:
+        type (int)
+        valeur (int, float)
+        taille (int, float)
+        prix (int, float)
+        numero_article (string)
+        nouveaux_numero_article (string)
+        numero_telephone (int)
+        text_validation (widget)
+    """
     bdd = IntergationDB()
 
     if type == "":
@@ -51,11 +67,16 @@ def modification_composant(type, valeur, taille, prix, numero_article, nouveaux_
         text_validation.config(text = "Les modifications ont été effectuer correctementn")
     except:
         text_validation.config(text = "Entrez un numero de téléphone uniquement composer de chiffre sans espace")
-
-    
-
-#affiche l'interface graphique
+ 
 def modifier_materiel(maitre):
+    """affiche l'interface pour modifier un composant
+
+    Args:
+        maitre (widget)
+
+    Returns:
+        frame (widget)
+    """
     frame = tkinter.Frame(maitre)
 
     text_type = tkinter.Label(frame, text="Entrez le type")

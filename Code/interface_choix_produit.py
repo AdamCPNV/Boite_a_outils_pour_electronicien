@@ -1,8 +1,8 @@
 """
 Auteur : Adam Sifate
 Projet : Boîte à outils pour électronicien
-Version : 0.3
-Date : 24.05.2024
+Version : 0.4
+Date : 30.05.2024
 """
 
 import tkinter
@@ -11,9 +11,24 @@ from changement_frame import change_frame
 import choix_outils
 
 def retour(maitre):
+    """Retourne au menu précédent
+
+    Args:
+        maitre (widget):
+    """
     change_frame(maitre, choix_outils.choix_des_outils(maitre))
 
 def rechercher_produit(type, valeur, taille):
+    """recherche les produit correspendent au résultat fournis par les outils
+
+    Args:
+        type (int, float)
+        valeur (int, float)
+        taille (int, float)
+
+    Returns:
+        resulat (liste)
+    """
     bdd = integration.IntergationDB()
     if taille != 0:
         resultat = bdd.rechercher_produit(type, valeur, taille)
@@ -21,8 +36,18 @@ def rechercher_produit(type, valeur, taille):
         resultat = bdd.rechercher_resistance(valeur)
     return resultat
 
-# affiche l'interface graphique
 def affichage_produit(maitre, type, valeur, taille = 0):
+    """Affiche la liste des produits
+
+    Args:
+        maitre (widget)
+        type (int, float)
+        valeur (int, float)
+        taille (int, float)
+
+    Returns:
+        frame(widget)
+    """
     frame = tkinter.Frame(maitre)
     info_produit = tkinter.Label(frame)
     info_produit.grid()

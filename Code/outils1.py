@@ -1,8 +1,8 @@
 """
 Auteur : Adam Sifate
 Projet : Boîte à outils pour électronicien
-Version : 0.6
-Date : 23.05.2024
+Version : 0.7
+Date : 30.05.2024
 """
 import tkinter
 import loi_ohm
@@ -11,11 +11,29 @@ import interface_choix_produit
 import choix_outils
 
 def retour(maitre):
+    """Retourne au menu précédent
+
+    Args:
+        maitre (widget):
+    """
     change_frame(maitre, choix_outils.choix_des_outils(maitre))
 
-#Recupere les valeurs insérer par l'utilisateur et affiche les résultat
-
 def recuprer_champs(tension_alimentation, courrant_max, tension_seuil_led, text_resistance, text_courrant_avec_resistance, text_puissance_dissiper, bouton_rechercher, maitre):
+    """Recupere les valeurs insérer par l'utilisateur et affiche les résultat
+
+    Args:
+        tension_alimentation (strin): 
+        courrant_max (string):
+        tension_seuil_led (string):
+        text_resistance (string): 
+        text_courrant_avec_resistance (string):
+        text_puissance_dissiper (string):
+        bouton_rechercher (widget):
+        maitre (widget)
+
+    Returns:
+        None
+    """    """"""
     try:
         tension_alimentation = float(tension_alimentation)
         courrant_max = float(courrant_max)
@@ -53,8 +71,15 @@ def recuprer_champs(tension_alimentation, courrant_max, tension_seuil_led, text_
     text_puissance_dissiper.config(text= "Puissance disspé :" + resistance_puissance)
     bouton_rechercher.config(command= lambda :(change_frame(maitre, interface_choix_produit.affichage_produit(maitre,1,resistance_a_installer, puissance_dissiper))))
 
-# affiche l'interface graphique
 def outils1(maitre):
+    """Affiche interface graphique outils1
+
+    Args:
+        maitre (widget):
+
+    Returns:
+        widget
+    """
     frame = tkinter.Frame(maitre)
 
     text_tension_alimentation = tkinter.Label(frame, text = "Veuilliez entrez la tension d'allimentaion (en volte): ")

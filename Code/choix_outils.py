@@ -1,8 +1,8 @@
 """
 Auteur : Adam Sifate
 Projet : Boîte à outils pour électronicien
-Version : 0.2
-Date : 13.05.2024
+Version : 0.3
+Date : 30.05.2024
 """
 import tkinter
 from changement_frame import change_frame
@@ -18,8 +18,13 @@ import gestion_materielle.suppression_materielle as suppression_materielle
 
 
 
-# permet de differencier quelle outils à été choisi
 def changement_menu(maitre, outils):
+    """Appelle la nouvelle interface graphique en fonction du produit charger
+
+    Args:
+        maitre (widget)
+        outils (int)
+    """
 
     match outils:
         case 1:
@@ -41,8 +46,15 @@ def changement_menu(maitre, outils):
         case 9 :
             change_frame(maitre, suppression_materielle.supprimer_materiel(maitre))
 
-# affiche l'interface graphique
 def choix_des_outils(maitre):
+    """affiche l'interface graphique de choix de outils
+
+    Args:
+        maitre (widget)
+
+    Returns:
+        frame (widget)
+    """
     frame = tkinter.Frame(maitre)
     titre = tkinter.Label(frame, text= "Veuilliez choisire ce que vous voulez faire")
     outils1 = tkinter.Button(frame, text="Dimensionnement d'une résistance dans un montage éà LED", command=lambda : changement_menu(frame, 1))

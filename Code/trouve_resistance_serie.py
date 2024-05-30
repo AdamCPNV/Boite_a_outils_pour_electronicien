@@ -1,14 +1,24 @@
 """
 Auteur : Adam Sifate
 Projet : Boîte à outils pour électronicien
-Version : 0.4
-Date : 27.05.2024
+Version : 0.5
+Date : 30.05.2024
 """
 SERIE = [1, 1.2, 1.5, 1.8, 2.2, 2.7, 3.3, 3.9, 4.7, 5.6, 6.8, 8.2]
 
-# retourne la paire de résistance la plus proche
-def trouve_paire_reistance(cible):
 
+def trouve_paire_reistance(cible):
+    """retourne la paire de résistance la plus proche de la valeur voulue
+
+    Args:
+        cible (int,float): valeur rechercher
+
+    Returns:
+        resistance1(int, float)
+        resistance2(int, float) 
+        somme_proche(int, float)
+        marge_erreur_proche(int, float)
+    """
     if cible > 10000000:
         return False
     

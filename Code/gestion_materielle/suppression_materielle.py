@@ -1,8 +1,8 @@
 """
 Auteur : Adam Sifate
 Projet : Boîte à outils pour électronicien
-Version : 0.2
-Date : 28.05.2024
+Version : 0.3
+Date : 30.05.2024
 """
 import tkinter
 from integration import IntergationDB
@@ -11,9 +11,20 @@ from changement_frame import change_frame
 import choix_outils
 
 def retour(maitre):
+    """Retourne au menu précédent
+
+    Args:
+        maitre (widget):
+    """
     change_frame(maitre, choix_outils.choix_des_outils(maitre))
 
 def supprimer_fournisseur(numer_article, text_validation):
+    """supprime du materielle (fonction a renomer)
+
+    Args:
+        numer_article (string)
+        text_validation (widget)
+    """
     bdd = IntergationDB()
     try:
         bdd.supprimer_produit(numer_article)
@@ -21,8 +32,15 @@ def supprimer_fournisseur(numer_article, text_validation):
     except:
         text_validation.config(text = "Une erreur c'est produit veuiller reseayer")
 
-#affiche l'interface graphique
 def supprimer_materiel(maitre):
+    """affiche l'interface de suppression de article
+
+    Args:
+        maitre (widget)
+
+    Returns:
+        frame (widget)
+    """
     frame = tkinter.Frame(maitre)
 
     numero_materielle = tkinter.Label(frame, text="Entrer le numero de materielle")

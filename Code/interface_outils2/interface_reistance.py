@@ -1,8 +1,8 @@
 """
 Auteur : Adam Sifate
 Projet : Boîte à outils pour électronicien
-Version : 0.3
-Date : 24.05.2024
+Version : 0.4
+Date : 30.05.2024
 """
 
 import tkinter
@@ -12,9 +12,25 @@ import interface_choix_produit
 import choix_outils
 
 def retour(maitre):
+    """Retourne au menu précédent
+
+    Args:
+        maitre (widget):
+    """
     change_frame(maitre, choix_outils.choix_des_outils(maitre))
-# récupere les donnée entrer est affiche le résultat
+
 def recuperer_champs( temps_charge_condensateur,  capaciter, taille_reistance, temps_charge_reel_reistance, bouton_rechercher,maitre):
+    """ récupere les donnée entrer est affiche le résultat
+
+
+    Args:
+        temps_charge_condensateur (int, float)
+        capaciter (int, flaot)
+        taille_reistance (int, flaot)
+        temps_charge_reel_reistance (int, float)
+        bouton_rechercher (widget)
+        maitre (widget)
+    """    """"""
     try:
         temps_charge_condensateur = float(temps_charge_condensateur)
         capaciter = float(capaciter)
@@ -29,8 +45,15 @@ def recuperer_champs( temps_charge_condensateur,  capaciter, taille_reistance, t
     temps_charge_reel_reistance.config(text = " le temps de charge réel sera de  : " + str(resltat_reistance[1]))
     bouton_rechercher.config(command= lambda :(change_frame(maitre, interface_choix_produit.affichage_produit(maitre,1,resltat_reistance[0]))))
 
-
 def interface_resistance_outils2(maitre):
+    """Affiche l'interface de calcule de resistance de l'outils 2
+
+    Args:
+        maitre (widget)
+
+    Returns:
+        frame (widget)
+    """
 
     frame = tkinter.Frame(maitre)
 

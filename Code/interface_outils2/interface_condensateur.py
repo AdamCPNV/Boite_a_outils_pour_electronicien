@@ -1,8 +1,8 @@
 """
 Auteur : Adam Sifate
 Projet : Boîte à outils pour électronicien
-Version : 0.4
-Date : 24.05.2024
+Version : 0.5
+Date : 30.05.2024
 """
 
 import tkinter
@@ -12,9 +12,24 @@ import trouve_produit_inserer
 import choix_outils
 
 def retour(maitre):
+    """Retourne au menu précédent
+
+    Args:
+        maitre (widget):
+    """
+    
     change_frame(maitre, choix_outils.choix_des_outils(maitre))
-# récupere les donnée entrer est affiche le résultat
+
 def recuperer_champs(reistance, tao, bouton_rechercher,maitre, text_taille_condensateur):
+    """recuperer les champs et affiche le resultat
+
+    Args:
+        reistance (int, float)
+        tao (int, flaot)
+        bouton_rechercher (widget)
+        maitre (widget)
+        text_taille_condensateur (widget)
+    """    """"""
     try:
         tao = float(tao)
         text_taille_condensateur = float(text_taille_condensateur)
@@ -29,6 +44,14 @@ def recuperer_champs(reistance, tao, bouton_rechercher,maitre, text_taille_conde
 
 
 def interface_condensateur_outils2(maitre):
+    """Affiche l'interface de calcule du condensateur
+
+    Args:
+        maitre (widget)
+
+    Returns:
+        frame (widget)
+    """
 
     frame = tkinter.Frame(maitre)
 

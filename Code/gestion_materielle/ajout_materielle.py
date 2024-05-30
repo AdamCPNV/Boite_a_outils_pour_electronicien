@@ -1,8 +1,8 @@
 """
 Auteur : Adam Sifate
 Projet : Boîte à outils pour électronicien
-Version : 0.2
-Date : 28.05.2024
+Version : 0.3
+Date : 30.05.2024
 """
 import tkinter
 from integration import IntergationDB
@@ -11,9 +11,26 @@ from changement_frame import change_frame
 import choix_outils
 
 def retour(maitre):
+    """Retourne au menu précédent
+
+    Args:
+        maitre (widget):
+    """
     change_frame(maitre, choix_outils.choix_des_outils(maitre))
 
 def ajout_composant(type, valeur, taille, prix, numer_article, telephone, reference_fabriquant, text_validation):
+    """ajoute un composant a la BD
+
+    Args:
+        type (int)
+        valeur (int, float)
+        taille (int, float)
+        prix (int, float)
+        numer_article (string)
+        telephone (int)
+        reference_fabriquant (string)
+        text_validation (widget)
+    """
     bdd = IntergationDB()
     try:
         bdd.insertion_produit(type, valeur, taille, prix, reference_fabriquant, telephone, numer_article)
@@ -21,12 +38,15 @@ def ajout_composant(type, valeur, taille, prix, numer_article, telephone, refere
     except:
         text_validation.config(text = "tout les champs a par le numero de numero de article doive etre composer uniquement de chiffre ")
 
-    
-
-
-
-#affiche l'interface graphique
 def ajouter_materiel(maitre):
+    """affiche l'interface graphique pour ajouter un composant
+
+    Args:
+        maitre (widget)
+
+    Returns:
+        frame (widget)
+    """
     frame = tkinter.Frame(maitre)
 
     text_type = tkinter.Label(frame, text="Entrez le type du composant")
@@ -40,10 +60,7 @@ def ajouter_materiel(maitre):
 
     text_prix = tkinter.Label(frame, text = "Entrer le prix :")
     entrer_prix = tkinter.Entry(frame)
-
-    text_num_fabrican = tkinter.Label(frame, text = "Entre numero fabriquant")
-    entrer_num_fabrican = tkinter.Entry(frame)
-
+    
     text_num_article = tkinter.Label(frame, text= "Entrez le numero de article")
     entrer_num_article = tkinter.Entry(frame)
     
@@ -53,12 +70,9 @@ def ajouter_materiel(maitre):
     text_ref_fabriquant = tkinter.Label(frame, text="Entrer reference fabriquant")
     entrer_ref_fabriquant = tkinter.Entry(frame)
 
-    # ajouter les bouton manquant 
-    # tester que sa fonctionne en ajoutant composant fournisseur est en recherchat le produit
-
     text_validation = tkinter.Label(frame, text="")
-    bouton_ajoute = tkinter.Button(frame,text= "Ajouté", command=lambda:(ajout_composant(entrer_type.get,
-                                                                                         entrer_taille.get(),
+    bouton_ajoute = tkinter.Button(frame,text= "Ajouté", command=lambda:(ajout_composant(entrer_type.get(),
+                                                                                         entrer_valeur.get(),
                                                                                          entrer_taille.get(),
                                                                                          entrer_prix.get(),
                                                                                          entrer_num_article.get(),
@@ -81,9 +95,6 @@ def ajouter_materiel(maitre):
 
     text_prix.grid(row=3, column=0)
     entrer_prix.grid(row=3,column= 1)
-
-    text_num_fabrican.grid(row=4, column=0)
-    entrer_num_fabrican.grid(row=4, column=1)
 
     text_num_article.grid(row=5, column= 0)
     entrer_num_article.grid(row=5, column= 1)
